@@ -23,8 +23,34 @@
 # include <math.h>
 
 # define WIN_WIDTH	800
-# define WIN_HEIGHT	800
+# define WIN_HEIGHT	600
 
+typedef struct		s_map
+{
+	int				nb_line;
+	int				nb_int;
+	int				**tab;
+}					t_map;
+
+typedef struct		s_img
+{
+	void			*img;
+	int				*str_img;
+	int				bpp;
+	int				s_l;
+	int				endian;
+}					t_img;
+
+typedef struct		s_mlx
+{
+	void			*mlx;
+	void			*win;
+	t_img			*img;
+	t_map			*map;
+}					t_mlx;
+
+int			ft_reader(int argc, char *argv, t_mlx *mlx);
+int			ft_atoi_wolf(char *str, int i);
 
 
 #endif

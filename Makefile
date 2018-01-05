@@ -13,6 +13,9 @@
 NAME = 			wolf3d
 
 SRCS = 			main.c\
+				ft_reader.c\
+				ft_atoi_wolf.c\
+				ft_check_errors.c\
 
 OBJS = 			$(SRCS:.c=.o)
 
