@@ -105,8 +105,6 @@ static int	ft_read_data(t_map *map, int fd)
 		ft_putstr("file is empty : error\n");
 		return (-1);
 	}
-	printf("ligne : %d\n", map->nb_line);
-	printf("int : %d\n", map->nb_int);
 	free(buff);
 	return (0);
 }
