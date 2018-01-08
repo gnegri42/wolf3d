@@ -105,7 +105,7 @@ int			ft_reader(int argc, char *argv, t_mlx *mlx)
 		free(tmp);
 		free(tmp2);
 		mlx->map->nb_line++;
-		free(line);
+		free(line);		
 	}
 	mlx->map->content = ft_strsplit(mlx->map->str, '\n');
 	if (ft_verifs(fd, mlx->map, line) == -1)

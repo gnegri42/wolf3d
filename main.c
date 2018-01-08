@@ -35,10 +35,9 @@ static int	**ft_new_tab(char *str, int nb_line, int nb_int)
 			printf("%d", tab[j][i]);
 			i++;
 		}
-		if (str[k] == '\n')
-			printf("\n");
 		k++;
 		j++;
+		
 	}
 	return (tab);
 }
@@ -48,12 +47,8 @@ int		main(int argc, char **argv)
 	t_mlx	*mlx;
 	t_img	*img;
 	t_map	*map;
-	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
-	if (!(map = (t_map *)malloc(sizeof(t_map))))
+	if (!(map = (t_map *)malloc(sizeof (t_map))))
 		return (-1);
 	if (!(mlx = (t_mlx *)malloc(sizeof(t_mlx))))
 		return (-1);
@@ -64,8 +59,9 @@ int		main(int argc, char **argv)
 		printf("error \n");
 		sleep(10);
 		return (0);
-	}
-	map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int);
+	}	
+	if ((map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int)) == 0)
+		return (0);
 	sleep(3);
 	/*
 	mlx->mlx = mlx_init();

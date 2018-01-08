@@ -19,10 +19,15 @@ static int	ft_number_error(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i] > '0' && str[i] < '9') && str[i + 1] != ' ')
+		if (str[i] > '0' && str[i] < '9')
 		{
-			ft_putstr("wrong number value : ");
-			return (-1);
+			while (str[i] > '0' && str[i] < '9' && str[i + 1] != ' ')
+				i++;
+			if ((str[i] > '0' && str[i] < '9') && str[i + 1] != ' ')
+			{
+				ft_putstr("wrong number value : ");
+				return (-1);
+			}
 		}
 		else if (str[i + 1] == ' ' && (str[i + 1] < '0' && str[i + 1] > '9'))
 		{
@@ -61,7 +66,8 @@ int			ft_check_errors(char *str)
 	}
 	while (str[i] != '\0')
 		i++;
-	if (ft_number_error(str) == -1 || ft_invalid(str, 0) == -1)
+	if (ft_number_error(str) ==  -1 || 
+		ft_invalid(str, 0) == -1)
 		return (-1);
 	return (0);
 }
