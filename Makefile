@@ -6,7 +6,7 @@
 #    By: gnegri <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/04 09:53:23 by gnegri            #+#    #+#              #
-#    Updated: 2018/01/04 09:53:25 by gnegri           ###   ########.fr        #
+#    Updated: 2018/01/08 10:49:06 by bmuselet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ lib :
 	@make -C $(LIB_PATH)
 
 $(NAME) : $(OBJS)
-	@echo "\033[1;91mCompilation... Fractol\033[0m"
+	@echo "\033[1;91mCompilation... wolf3d\033[0m"
 	@$(CC) $(FLAGS) -c $(SRCS)
 	@$(CC) $(FLAGS) $(FLAGS2) -o $(NAME) $(OBJS) $(LIB) -Wunused-command-line-argument
 	@echo "\033[1;91mCompilation complete !\033[0m" 
