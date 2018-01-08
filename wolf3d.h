@@ -30,6 +30,8 @@ typedef struct		s_map
 	int				nb_line;
 	int				nb_int;
 	int				**tab;
+	char			*str;
+	char			**content;
 }					t_map;
 
 typedef struct		s_img
@@ -51,6 +53,6 @@ typedef struct		s_mlx
 
 int			ft_reader(int argc, char *argv, t_mlx *mlx);
 int			ft_atoi_wolf(char *str, int i);
-
+int			ft_check_errors(char *str);
 
 #endif

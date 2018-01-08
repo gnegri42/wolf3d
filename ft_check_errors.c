@@ -65,23 +65,3 @@ int			ft_check_errors(char *str)
 		return (0);
 	return (1);
 }
-
-int			ft_check_args(int argc, char *argv, int *fd)
-{
-	if (argc != 2)
-	{
-		ft_putstr("usage: ./wolf3d input_file\n");
-		return (-1);
-	}
-	if ((*fd = open(argv, O_RDONLY)) < 0)
-	{
-		ft_putstr("bad_file : error\n");
-		return (-1);
-	}
-	if (BUFF_SIZE <= 0)
-	{
-		ft_putstr("BUFF_SIZE : error\n");
-		return (-1);
-	}
-	return (1);
-}
