@@ -58,10 +58,14 @@ static int	ft_verifs(int fd, t_map *map, char *line)
 		ft_putstr("get_next_line : error\n");
 		return (-1);
 	}
-	if (close(fd) == -1 || ft_check_errors(map->str) == -1 ||
-		ft_verif_int_nb(map) == -1)
+	if (close(fd) == -1 || ft_check_errors(map->str) == -1)
 	{
 		ft_putstr("error\n");
+		return (-1);
+	}
+		if (ft_verif_int_nb(map) == -1)
+	{
+		ft_putstr("error : wrong line length\n");
 		return (-1);
 	}
 	return (0);

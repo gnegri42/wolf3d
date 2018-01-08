@@ -55,21 +55,14 @@ int		main(int argc, char **argv)
 	mlx->map = map;
 	img = NULL;
 	if (ft_reader(argc, argv[1], mlx) != 0)
-	{
-		printf("error \n");
-		sleep(10);
 		return (0);
-	}	
 	if ((map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int)) == 0)
 		return (0);
-	sleep(3);
-	/*
-	mlx->mlx = mlx_init();
+	/*mlx->mlx = mlx_init();
 	mlx->img = img;
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "wolf3d");
 	img->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	img->str_img = (int *)mlx_get_data_addr(img->img,
-		&(img->bpp), &(img->s_l), &(img->endian));
-	*/
+		&(img->bpp), &(img->s_l), &(img->endian));*/
 	return (0);
 }
