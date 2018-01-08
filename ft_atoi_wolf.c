@@ -19,9 +19,9 @@ int		ft_atoi_wolf(char *str, int i)
 
 	v = 0;
 	//posneg = 1;
-	//while (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' ||
-	//		str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
-	//	i++;
+	while (str[i] == '\n' || str[i] == '\t' || str[i] == '\v' ||
+			str[i] == '\r' || str[i] == '\f' || str[i] == ' ')
+		i++;
 	//if (str[*i] == '-')
 	//	posneg = -1;
 	//if (str[*i] == '+' || str[*i] == '-')

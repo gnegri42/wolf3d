@@ -21,12 +21,12 @@ static int			**ft_new_tab(char *str, int nb_line, int nb_int)
 
 	j = 0;
 	k = 0;
-	if (!(tab = (int **)malloc(sizeof(int *) * nb_line + 1)))
+	if (!(tab = (int **)malloc(sizeof(int *) * nb_line)))
 		return (NULL);
 	while (str[k] != '\0')
 	{
 		i = 0;
-		if (!(tab[j] = (int *)malloc(sizeof(int) * nb_int)))
+		if ((tab[j] = ft_memalloc(nb_int)) == NULL)
 			return (NULL);
 		if (str[k] >= '0' && str[k] <= '9')
 		{
@@ -35,8 +35,8 @@ static int			**ft_new_tab(char *str, int nb_line, int nb_int)
 		}
 		k++;
 		j++;
+		
 	}
-	tab[j] = 0;
 	return (tab);
 }
 
@@ -55,13 +55,12 @@ int		main(int argc, char **argv)
 	if (ft_reader(argc, argv[1], mlx) != 0)
 	{
 		printf("error \n");
-		//sleep(10);
+		sleep(10);
 		return (0);
 	}	
 	if ((map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int)) == 0)
 		return (0);
-	sleep(5);
-	//sleep(10);
+	sleep(3);
 	/*
 	mlx->mlx = mlx_init();
 	mlx->img = img;
@@ -70,6 +69,5 @@ int		main(int argc, char **argv)
 	img->str_img = (int *)mlx_get_data_addr(img->img,
 		&(img->bpp), &(img->s_l), &(img->endian));
 		*/
-
 	return (0);
 }
