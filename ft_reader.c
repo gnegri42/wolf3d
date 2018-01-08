@@ -116,17 +116,17 @@ static int	ft_check_read(int argc, char *argv, int *fd)
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fdf input_file\n");
-		return (0);
+		return (-1);
 	}
 	if ((*fd = open(argv, O_RDONLY)) < 0)
 	{
 		ft_putstr("bad_file : error\n");
-		return (0);
+		return (-1);
 	}
 	if (BUFF_SIZE <= 0)
 	{
 		ft_putstr("BUFF_SIZE : error\n");
-		return (0);
+		return (-1);
 	}
 	return (0);
 }
