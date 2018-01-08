@@ -145,8 +145,8 @@ int			ft_reader(int argc, char *argv, t_mlx *mlx)
 	if (ft_put_in_tab(mlx->map, fd) != 0)
 		return (-1);
 	return (0);
-}*/
-
+}
+*/
 static int	ft_strlen_content(char *str)
 {
 	int		i;
@@ -173,26 +173,16 @@ static int	ft_verif_int_nb(t_map *map)
 {
 	int		l;
 	int		c;
-	int 	i;
 
 	l = 0;
-	i = 0;
-	map->tab = (int **)malloc(sizeof(int *) * map->nb_line + 1);
 	while (l < map->nb_line - 1)
 	{
 		c = ft_strlen_content(map->content[l]);
 		if (ft_strlen_content(map->content[l + 1]) != c)
 			return (-1);
-		if ((map->tab[l] = (int *)malloc(sizeof(int) * c + 1)) == NULL)
-			return (-1);
-		//ft_put_in_tab(map, l);
 		l++;
 	}
-	if ((map->tab[l] = (int *)malloc(sizeof(int) * c + 1)) == NULL)
-		return (-1);
-	//ft_put_in_tab(map, l);
-	map->tab[l + 1] = 0;
-	return (1);
+	return (0);
 }
 
 static int	ft_verifs(int fd, t_map *map, char *line)
@@ -204,16 +194,15 @@ static int	ft_verifs(int fd, t_map *map, char *line)
 		free(map->str);
 		return (-1);
 	}
-	if (close(fd) == -1 || ft_check_errors(map->str) != 1 ||
-		ft_verif_int_nb(map) != 1)
+	if (close(fd) == -1 || ft_check_errors(map->str) == -1 ||
+		ft_verif_int_nb(map) == -1)
 	{
 		ft_putstr("error\n");
 		free(map->content);
 		free(map->str);
-		free(map->tab);
 		return (-1);
 	}
-	return (1);
+	return (0);
 }
 
 static int	ft_check_read(int argc, char *argv, int *fd)
@@ -244,8 +233,8 @@ int			ft_reader(int argc, char *argv, t_mlx *mlx)
 	char	*tmp2;
 
 	mlx->map->str = ft_strnew(1);
-	if (ft_check_read(argc, argv, &fd) == 0)
-		return (0);
+	if (ft_check_read(argc, argv, &fd) == -1)
+		return (-1);
 	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = mlx->map->str;
@@ -257,8 +246,8 @@ int			ft_reader(int argc, char *argv, t_mlx *mlx)
 		free(line);
 	}
 	mlx->map->content = ft_strsplit(mlx->map->str, '\n');
-	if (ft_verifs(fd, mlx->map, line) == 0)
-		return (0);
-	mlx->map->nb_int = ft_strlen_content(mlx->map->content[0]);
-	return (1);
+	if (ft_verifs(fd, mlx->map, line) == -1)
+		return (-1);
+	mlx->map->nb_int = ft_strlen_content(mlx->map->content[0]);	
+	return (0);
 }

@@ -31,7 +31,7 @@ static int	ft_number_error(char *str)
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 static int	ft_invalid(char *str, int i)
@@ -46,7 +46,7 @@ static int	ft_invalid(char *str, int i)
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 int			ft_check_errors(char *str)
@@ -57,11 +57,11 @@ int			ft_check_errors(char *str)
 	if (str[0] == '\0')
 	{
 		ft_putstr("file is empty : ");
-		return (0);
+		return (-1);
 	}
 	while (str[i] != '\0')
 		i++;
 	if (ft_number_error(str) == -1 || ft_invalid(str, 0) == -1)
-		return (0);
-	return (1);
+		return (-1);
+	return (0);
 }
