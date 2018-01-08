@@ -6,7 +6,7 @@
 /*   By: gnegri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 10:26:38 by gnegri            #+#    #+#             */
-/*   Updated: 2018/01/04 10:26:39 by gnegri           ###   ########.fr       */
+/*   Updated: 2018/01/08 11:50:51 by bmuselet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,17 +111,17 @@ static int	ft_put_in_tab(t_map *map, int fd)
 	{
 		i = 0;
 		j = 0;
-	//	if (!(map->tab[l] = (int *)malloc(sizeof(int) * (map->nb_int / map->nb_line) + 1)))
-	//		return (-1);
+		if (!(map->tab[l] = (int *)malloc(sizeof(int) * (map->nb_int / map->nb_line))))
+			return (-1);
 		while (line[i])
 		{
 			if (line[i] >= '0' && line[i] <= '9')
 			{
-				//printf("%d ", ft_atoi_wolf(line, i));
+				//printf("%d", ft_atoi_wolf(line, i));
 				map->tab[l][j] = ft_atoi_wolf(line, i);
-				printf("%d ", map->tab[l][i]);
-				j++;
+				printf("%d", map->tab[l][i]);
 			}
+			j++;
 			i++;
 		}
 		printf("\n");
@@ -164,6 +164,7 @@ static int	ft_read_data(t_map *map, int fd)
 	int c;
 	
 	c = 0;
+	map->nb_line = 0;
 	if (!(buff = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
 		return (-1);
 	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
@@ -226,8 +227,6 @@ int			ft_reader(int argc, char *argv, t_mlx *mlx)
 		return (-1);
 	fd = open(argv, O_RDONLY);
 	if (ft_put_in_tab(mlx->map, fd) != 0)
-	{
 		return (-1);
-	}
 	return (0);
 }
