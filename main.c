@@ -32,12 +32,16 @@ static int	**ft_new_tab(char *str, int nb_line, int nb_int)
 		if (str[k] >= '0' && str[k] <= '9')
 		{
 			tab[j][i] = ft_atoi_wolf(str, k);
-			printf("%d", tab[j][i]);
+			printf("%d ", tab[j][i]);
 			i++;
+			while ((str[k] >= '0' && str[k] <= '9') && (str[k + 1] != '\n' ||
+				str[k + 1] != '\0' || str[k + 1] != ' '))
+				k++;
 		}
+		if (str[k] == '\n')
+		printf("\n");
 		k++;
 		j++;
-		
 	}
 	return (tab);
 }
@@ -58,7 +62,8 @@ int		main(int argc, char **argv)
 		return (0);
 	if ((map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int)) == 0)
 		return (0);
-	/*mlx->mlx = mlx_init();
+	/*
+	mlx->mlx = mlx_init();
 	mlx->img = img;
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "wolf3d");
 	img->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
