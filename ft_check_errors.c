@@ -61,7 +61,8 @@ int			ft_check_errors(char *str)
 	}
 	while (str[i] != '\0')
 		i++;
-	if (ft_number_error(str) == -1 || ft_invalid(str, 0) == -1)
+	if (ft_number_error(str) ==  -1 || 
+		ft_invalid(str, 0) == -1)
 		return (-1);
 	return (0);
 }

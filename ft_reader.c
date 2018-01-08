@@ -190,16 +190,12 @@ static int	ft_verifs(int fd, t_map *map, char *line)
 	if (get_next_line(fd, &line) < 0)
 	{
 		ft_putstr("get_next_line : error\n");
-		free(map->content);
-		free(map->str);
 		return (-1);
 	}
 	if (close(fd) == -1 || ft_check_errors(map->str) == -1 ||
 		ft_verif_int_nb(map) == -1)
 	{
 		ft_putstr("error\n");
-		free(map->content);
-		free(map->str);
 		return (-1);
 	}
 	return (0);
@@ -243,7 +239,7 @@ int			ft_reader(int argc, char *argv, t_mlx *mlx)
 		free(tmp);
 		free(tmp2);
 		mlx->map->nb_line++;
-		free(line);
+		free(line);		
 	}
 	mlx->map->content = ft_strsplit(mlx->map->str, '\n');
 	if (ft_verifs(fd, mlx->map, line) == -1)
