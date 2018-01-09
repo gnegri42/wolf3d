@@ -6,7 +6,7 @@
 /*   By: gnegri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 11:31:17 by gnegri            #+#    #+#             */
-/*   Updated: 2018/01/08 10:50:01 by bmuselet         ###   ########.fr       */
+/*   Updated: 2018/01/09 14:44:11 by bmuselet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ static int	ft_invalid(char *str, int i)
 		if (str[i] != ' ' && str[i] != '\n'\
 				&& !(str[i] >= '0' && str[i] <= '9'))
 		{
-				ft_putstr("error: bad character in file\n");
-				return (-1);
+			ft_putstr("error: bad character in file\n");
+			return (-1);
 		}
 		if (str[i] == '0')
 			count = 1;
@@ -95,8 +95,8 @@ int			ft_check_errors(char *str)
 	}
 	while (str[i] != '\0')
 		i++;
-	if (ft_start_error(str) == -1 || ft_invalid(str, 0) == -1 ||
-		ft_number_error(str) ==  -1)
+	if (ft_start_error(str) == -1 || ft_invalid(str, 0) == -1
+		|| ft_number_error(str) == -1)
 		return (-1);
 	return (0);
 }
