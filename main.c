@@ -60,6 +60,8 @@ int				main(int argc, char **argv)
 	map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int);
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "Wolf3d 42");
+	if (ft_init_player(mlx) == -1)
+		return (-1);
 	img->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	img->str_img = (int *)mlx_get_data_addr(img->img,
 		&(img->bpp), &(img->s_l), &(img->endian));

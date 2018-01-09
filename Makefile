@@ -17,6 +17,7 @@ SRCS = 			main.c\
 				ft_atoi_wolf.c\
 				ft_check_errors.c\
 				ft_keycode.c\
+				ft_init.c\
 
 OBJS = 			$(SRCS:.c=.o)
 

@@ -22,13 +22,24 @@
 # include <sys/stat.h>
 # include <math.h>
 
-# define WIN_WIDTH	800
-# define WIN_HEIGHT	600
+# define WIN_WIDTH	512
+# define WIN_HEIGHT	384
 
 # define BLUE 0x0041FF
 # define WHITE 0xFFFFFF
 # define GREEN 0x25FF50
 # define ORANGE 0x00FFA500
+
+typedef struct		s_player
+{
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			plane_x;
+	double			plane_y;
+	int				fov;
+}					t_player;
 
 typedef struct		s_map
 {
@@ -54,11 +65,13 @@ typedef struct		s_mlx
 	void			*win;
 	t_img			*img;
 	t_map			*map;
+	t_player		*player;
 }					t_mlx;
 
 int			ft_reader(int argc, char *argv, t_map *map);
 int			ft_atoi_wolf(char *str, int *i);
 int			ft_check_errors(char *str);
 int			ft_key_events(int keycode);
+int			ft_init_player(t_mlx *mlx);
 
 #endif
