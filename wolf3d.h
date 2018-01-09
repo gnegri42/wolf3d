@@ -25,13 +25,18 @@
 # define WIN_WIDTH	800
 # define WIN_HEIGHT	600
 
+# define BLUE 0x0041FF
+# define WHITE 0xFFFFFF
+# define GREEN 0x25FF50
+# define ORANGE 0x00FFA500
+
 typedef struct		s_map
 {
 	int				nb_line;
 	int				nb_int;
-	int				**tab;
 	char			*str;
 	char			**content;
+	int				**tab;
 }					t_map;
 
 typedef struct		s_img
@@ -51,8 +56,9 @@ typedef struct		s_mlx
 	t_map			*map;
 }					t_mlx;
 
-int			ft_reader(int argc, char *argv, t_mlx *mlx);
-int			ft_atoi_wolf(char *str, int i);
+int			ft_reader(int argc, char *argv, t_map *map);
+int			ft_atoi_wolf(char *str, int *i);
 int			ft_check_errors(char *str);
+int			ft_key_events(int keycode);
 
 #endif

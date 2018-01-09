@@ -13,7 +13,7 @@
 #include "wolf3d.h"
 #include <stdio.h>
 
-static int	**ft_new_tab(char *str, int nb_line, int nb_int)
+static int		**ft_new_tab(char *str, int nb_line, int nb_int)
 {
 	int		i;
 	int		j;
@@ -24,50 +24,46 @@ static int	**ft_new_tab(char *str, int nb_line, int nb_int)
 	k = 0;
 	if (!(tab = (int **)malloc(sizeof(int *) * nb_line)))
 		return (NULL);
-	while (str[k] != '\0')
+	while (str[k] != '\0' && j < nb_line)
 	{
 		i = 0;
-		if ((tab[j] = ft_memalloc(nb_int)) == NULL)
+		if (!(tab[j] = (int *)malloc(sizeof(int) * nb_int)))
 			return (NULL);
-		if (str[k] >= '0' && str[k] <= '9')
+		while (str[k] != '\n' && str[k] != '\0' && j < nb_line)
 		{
-			tab[j][i] = ft_atoi_wolf(str, k);
-			printf("%d ", tab[j][i]);
-			i++;
-			while ((str[k] >= '0' && str[k] <= '9') && (str[k + 1] != '\n' ||
-				str[k + 1] != '\0' || str[k + 1] != ' '))
+			tab[j][i++] = ft_atoi_wolf(str, &k);
+			while (str[k] == ' ')
 				k++;
 		}
-		if (str[k] == '\n')
-		printf("\n");
 		k++;
 		j++;
 	}
 	return (tab);
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_mlx	*mlx;
 	t_img	*img;
 	t_map	*map;
 
-	if (!(map = (t_map *)malloc(sizeof (t_map))))
-		return (-1);
 	if (!(mlx = (t_mlx *)malloc(sizeof(t_mlx))))
 		return (-1);
+	if (!(map = (t_map *)malloc(sizeof (t_map))))
+		return (-1);
+	if (!(img = (t_img *)malloc(sizeof(t_img))))
+		return (-1);
 	mlx->map = map;
-	img = NULL;
-	if (ft_reader(argc, argv[1], mlx) != 0)
-		return (0);
-	if ((map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int)) == 0)
-		return (0);
-	/*
-	mlx->mlx = mlx_init();
 	mlx->img = img;
-	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "wolf3d");
+	if (ft_reader(argc, argv[1], map) != 0)
+		return (-1);
+	map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int);
+	mlx->mlx = mlx_init();
+	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "Wolf3d 42");
 	img->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	img->str_img = (int *)mlx_get_data_addr(img->img,
-		&(img->bpp), &(img->s_l), &(img->endian));*/
+		&(img->bpp), &(img->s_l), &(img->endian));
+	mlx_key_hook(mlx->win, ft_key_events, mlx);
+	mlx_loop(mlx->mlx);
 	return (0);
 }
