@@ -12,7 +12,6 @@
 
 #include "wolf3d.h"
 
-
 /*
 Function that init the player position and the vectors in order to calculate the view.
 To be modified later to chage the initial position of the player

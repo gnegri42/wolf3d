@@ -68,10 +68,10 @@ typedef struct		s_mlx
 	t_player		*player;
 }					t_mlx;
 
-int			ft_reader(int argc, char *argv, t_map *map);
-int			ft_atoi_wolf(char *str, int *i);
-int			ft_check_errors(char *str);
-int			ft_key_events(int keycode);
-int			ft_init_player(t_mlx *mlx);
+int					ft_reader(int argc, char *argv, t_map *map);
+int					ft_atoi_wolf(char *str, int *i);
+int					ft_check_errors(char *str);
+int					ft_key_events(int keycode);
+int					ft_init_player(t_mlx *mlx);
 
 #endif
