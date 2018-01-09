@@ -18,6 +18,8 @@ SRCS = 			main.c\
 				ft_check_errors.c\
 				ft_keycode.c\
 				ft_init.c\
+				ft_calc.c\
+				ft_draw.c\
 
 OBJS = 			$(SRCS:.c=.o)
 

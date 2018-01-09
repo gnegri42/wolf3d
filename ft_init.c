@@ -20,14 +20,18 @@ To be modified later to chage the initial position of the player
 int		ft_init_player(t_mlx *mlx)
 {
 	t_player	*player;
+	t_ray		*ray;
 
 	if (!(player = (t_player *)malloc(sizeof(t_player))))
 		return (-1);
+	if (!(ray = (t_ray *)malloc(sizeof(t_ray))))
+		return (-1);
 	mlx->player = player;
-	player->pos_x = 22;
-	player->pos_y = 12;
-	player->dir_x = -1;
-	player->dir_y = 0;
+	player->ray = ray;
+	player->pos_x = 2;
+	player->pos_y = 2;
+	player->dir_x = 0;
+	player->dir_y = 1;
 	player->plane_x = 0;
 	player->plane_y = 0.66;
 	return (0);

@@ -25,10 +25,28 @@
 # define WIN_WIDTH	512
 # define WIN_HEIGHT	384
 
+# define BLACK 0x000000
 # define BLUE 0x0041FF
 # define WHITE 0xFFFFFF
 # define GREEN 0x25FF50
 # define ORANGE 0x00FFA500
+
+typedef struct		s_ray
+{
+	double			pos_x;
+	double			pos_y;
+	double			dir_x;
+	double			dir_y;
+	double			side_dist_x;
+	double			side_dist_y;
+	double			delta_dist_x;
+	double			delta_dist_y;
+	double			wall_dist;
+	int				step_x;
+	int				step_y;
+	int				hit;
+	int				side;
+}					t_ray;
 
 typedef struct		s_player
 {
@@ -39,6 +57,10 @@ typedef struct		s_player
 	double			plane_x;
 	double			plane_y;
 	int				fov;
+	int				camera_x;
+	int				map_x;
+	int				map_y;
+	t_ray			*ray;
 }					t_player;
 
 typedef struct		s_map
@@ -48,6 +70,9 @@ typedef struct		s_map
 	char			*str;
 	char			**content;
 	int				**tab;
+	int				line_height;
+	int				pixel_start;
+	int				pixel_last;
 }					t_map;
 
 typedef struct		s_img
@@ -71,7 +96,9 @@ typedef struct		s_mlx
 int					ft_reader(int argc, char *argv, t_map *map);
 int					ft_atoi_wolf(char *str, int *i);
 int					ft_check_errors(char *str);
-int					ft_key_events(int keycode);
+int					ft_key_events(int keycode, t_mlx *mlx);
 int					ft_init_player(t_mlx *mlx);
+void				ft_calc(t_mlx *mlx, t_player *player);
+void				ft_draw_col(t_mlx *mlx, int x, int color);
 
 #endif
