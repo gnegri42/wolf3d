@@ -49,7 +49,7 @@ int				main(int argc, char **argv)
 
 	if (!(mlx = (t_mlx *)malloc(sizeof(t_mlx))))
 		return (-1);
-	if (!(map = (t_map *)malloc(sizeof (t_map))))
+	if (!(map = (t_map *)malloc(sizeof(t_map))))
 		return (-1);
 	if (!(img = (t_img *)malloc(sizeof(t_img))))
 		return (-1);
