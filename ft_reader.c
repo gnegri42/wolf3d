@@ -15,14 +15,14 @@
 
 static int	ft_strlen_content(char *str)
 {
-	int		i;
-	int		nb_int;
+	int	i;
+	int	nb_int;
 
 	i = 0;
 	nb_int = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == ' ')
+		if (str[i] == ' ' || str[i] == '-')
 			i++;
 		if (ft_isdigit(str[i]) == 1)
 		{
@@ -55,17 +55,22 @@ static int	ft_verifs(int fd, t_map *map, char *line)
 {
 	if (get_next_line(fd, &line) < 0)
 	{
-		ft_putstr("get_next_line : error\n");
+		ft_putstr("error : unable to read any content\n");
+		free(map->str);
+		free(map->content);
 		return (-1);
 	}
-	if (close(fd) == -1 || ft_check_errors(map->str) == -1)
+	if (close(fd) == -1 || ft_check_errors(map->str) != 0)
 	{
-		ft_putstr("error\n");
+		free(map->content);
+		free(map->str);
 		return (-1);
 	}
-		if (ft_verif_int_nb(map) == -1)
+	if (ft_verif_int_nb(map) != 0)
 	{
 		ft_putstr("error : wrong line length\n");
+		free(map->content);
+		free(map->str);
 		return (-1);
 	}
 	return (0);
@@ -75,45 +80,41 @@ static int	ft_check_read(int argc, char *argv, int *fd)
 {
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./fdf input_file\n");
+		ft_putstr("usage: ./wolf3d input_file\n");
 		return (-1);
 	}
 	if ((*fd = open(argv, O_RDONLY)) < 0)
 	{
-		ft_putstr("bad_file : error\n");
-		return (-1);
-	}
-	if (BUFF_SIZE <= 0)
-	{
-		ft_putstr("BUFF_SIZE : error\n");
+		ft_putstr("error : bad_file\n");
+		close(*fd);
 		return (-1);
 	}
 	return (0);
 }
 
-int			ft_reader(int argc, char *argv, t_mlx *mlx)
+int			ft_reader(int argc, char *argv, t_map *map)
 {
 	int		fd;
 	char	*line;
 	char	*tmp;
 	char	*tmp2;
 
-	mlx->map->str = ft_strnew(1);
-	if (ft_check_read(argc, argv, &fd) == -1)
+	map->str = ft_strnew(1);
+	if (ft_check_read(argc, argv, &fd) != 0)
 		return (-1);
-	while (get_next_line(fd, &line) > 0)
+	while (get_next_line(fd, &line) == 1)
 	{
-		tmp = mlx->map->str;
+		tmp = map->str;
 		tmp2 = ft_strjoin(tmp, line);
-		mlx->map->str = ft_strjoin(tmp2, "\n");
+		map->str = ft_strjoin(tmp2, "\n");
 		free(tmp);
 		free(tmp2);
-		mlx->map->nb_line++;
-		free(line);		
+		map->nb_line++;
+		free(line);
 	}
-	mlx->map->content = ft_strsplit(mlx->map->str, '\n');
-	if (ft_verifs(fd, mlx->map, line) == -1)
+	map->content = ft_strsplit(map->str, '\n');
+	if (ft_verifs(fd, map, line) != 0)
 		return (-1);
-	mlx->map->nb_int = ft_strlen_content(mlx->map->content[0]);	
+	map->nb_int = ft_strlen_content(map->content[0]);
 	return (0);
 }
