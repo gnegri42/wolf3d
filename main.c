@@ -65,6 +65,8 @@ int				main(int argc, char **argv)
 	img->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	img->str_img = (int *)mlx_get_data_addr(img->img,
 		&(img->bpp), &(img->s_l), &(img->endian));
+	ft_calc(mlx, mlx->player);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
 	mlx_key_hook(mlx->win, ft_key_events, mlx);
 	mlx_loop(mlx->mlx);
 	return (0);
