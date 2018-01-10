@@ -30,8 +30,8 @@ int		ft_init_player(t_mlx *mlx)
 	player->ray = ray;
 	player->pos_x = 2;
 	player->pos_y = 2;
-	player->dir_x = 0;
-	player->dir_y = 1;
+	player->dir_x = -1;
+	player->dir_y = 0;
 	player->plane_x = 0;
 	player->plane_y = 0.66;
 	return (0);

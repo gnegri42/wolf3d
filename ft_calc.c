@@ -53,7 +53,7 @@ static void	ft_find_wall(t_mlx *mlx, t_map *map, t_player *player, t_ray *ray)
 		{
 			if (ray->side_dist_x < ray->side_dist_y)
 			{
-				ray->side_dist_x += ray->delta_dist_y;
+				ray->side_dist_x += ray->delta_dist_x;
 				player->map_x += ray->step_x;
 				ray->side = 0;
 			}
@@ -64,11 +64,13 @@ static void	ft_find_wall(t_mlx *mlx, t_map *map, t_player *player, t_ray *ray)
 				ray->side = 1;
 			}
 			if (map->tab[player->map_x][player->map_y] > 0) 
+			{
 				ray->hit = 1;
-			if (ray->side == 0) 
-				ray->wall_dist = (player->map_x - ray->pos_x + (1 - ray->step_x) / 2) / ray->dir_x;
-			else
-				ray->wall_dist = (player->map_y - ray->pos_y + (1 - ray->step_y) / 2) / ray->dir_y;
+				if (ray->side == 0) 
+					ray->wall_dist = (player->map_x - ray->pos_x + (1 - ray->step_x) / 2) / ray->dir_x;
+				else
+					ray->wall_dist = (player->map_y - ray->pos_y + (1 - ray->step_y) / 2) / ray->dir_y;
+			}
 			map->line_height = WIN_HEIGHT / (double)ray->wall_dist;
 			map->pixel_start = -map->line_height / 2 + WIN_HEIGHT / 2;
 			if (map->pixel_start < 0)
