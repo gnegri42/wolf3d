@@ -13,6 +13,42 @@
 #include "wolf3d.h"
 #include <stdio.h>
 
+static void	ft_enclosed(t_mlx *mlx)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (i < mlx->map->nb_int)
+	{	
+		if (mlx->map->tab[0][i] == 0)
+			mlx->map->tab[0][i] = 1;
+		i++;
+	}
+	i = 0;
+	while (j < mlx->map->nb_int)
+	{
+		if (mlx->map->tab[mlx->map->nb_line - 1][j] == 0)
+			mlx->map->tab[mlx->map->nb_line - 1][j] = 1;
+		j++;
+	}
+	i = 0;
+	while (i < mlx->map->nb_line)
+	{
+		if (mlx->map->tab[i][0] == 0)
+			mlx->map->tab[i][0] = 1;
+		i++;
+	}
+	i = 0;
+	while (i < mlx->map->nb_line)
+	{
+		if (mlx->map->tab[i][mlx->map->nb_int - 1] == 0)
+			mlx->map->tab[i][mlx->map->nb_int - 1] = 1;
+		i++;
+	}
+}
+
 static int		**ft_new_tab(char *str, int nb_line, int nb_int)
 {
 	int		i;
@@ -58,6 +94,7 @@ int				main(int argc, char **argv)
 	if (ft_reader(argc, argv[1], map) != 0)
 		return (-1);
 	map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int);
+	ft_enclosed(mlx);
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "Wolf3d 42");
 	if (ft_init_player(mlx) == -1)
