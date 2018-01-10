@@ -25,12 +25,10 @@ void			ft_draw_col(t_mlx *mlx, int x, int color)
 	int		i;
 
 	i = 0;
-	while (i < WIN_HEIGHT)
-	{
-		if (i >= mlx->map->pixel_start && i <= mlx->map->pixel_last)
-			ft_fill_pixel(mlx->img, x, i, color);
-		else
-			ft_fill_pixel(mlx->img, x, i, BLACK);
-		i++;
-	}
+	while (i++ < mlx->map->pixel_start)
+		ft_fill_pixel(mlx->img, x, i, BLUE);
+	while (i++ <= mlx->map->pixel_last)
+		ft_fill_pixel(mlx->img, x, i, color);
+	while (i++ < WIN_HEIGHT)
+		ft_fill_pixel(mlx->img, x, i, BLACK);
 }

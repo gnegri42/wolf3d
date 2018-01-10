@@ -22,8 +22,8 @@
 # include <sys/stat.h>
 # include <math.h>
 
-# define WIN_WIDTH	512
-# define WIN_HEIGHT	384
+# define WIN_WIDTH	800
+# define WIN_HEIGHT	600
 
 # define BLACK 0x000000
 # define BLUE 0x0041FF
@@ -60,6 +60,8 @@ typedef struct		s_player
 	int				camera_x;
 	int				map_x;
 	int				map_y;
+	double			move;
+	double			turn;
 	t_ray			*ray;
 }					t_player;
 
