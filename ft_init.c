@@ -12,6 +12,31 @@
 
 #include "wolf3d.h"
 
+static int	ft_find_position(t_mlx *mlx)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < mlx->map->nb_line)
+	{
+		j = 0;
+		while (j < mlx->map->nb_int)
+		{
+			if (mlx->map->tab[i][j] != 0)
+				j++;
+			else
+			{
+				mlx->player->pos_x = j;
+				mlx->player->pos_y = i;
+				return (0);
+			}
+		}
+		i++;
+	}
+	return (0);
+}
+
 /*
 Function that init the player position and the vectors in order to calculate the view.
 To be modified later to chage the initial position of the player
@@ -28,10 +53,9 @@ int		ft_init_player(t_mlx *mlx)
 		return (-1);
 	mlx->player = player;
 	player->ray = ray;
-	player->pos_x = 2;
-	player->pos_y = 2;
-	player->dir_x = 0;
-	player->dir_y = 1;
+	ft_find_position(mlx);
+	player->dir_x = 1;
+	player->dir_y = 0;
 	player->plane_x = 0;
 	player->plane_y = 0.66;
 	return (0);
