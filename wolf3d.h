@@ -102,5 +102,6 @@ int					ft_key_events(int keycode, t_mlx *mlx);
 int					ft_init_player(t_mlx *mlx);
 void				ft_calc(t_mlx *mlx, t_player *player);
 void				ft_draw_col(t_mlx *mlx, int x);
+int					ft_red_cross(void);
 
 #endif

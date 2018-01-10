@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 static void	ft_enclosed(t_mlx *mlx)
 {
@@ -104,7 +103,8 @@ int				main(int argc, char **argv)
 		&(img->bpp), &(img->s_l), &(img->endian));
 	ft_calc(mlx, mlx->player);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
-	mlx_key_hook(mlx->win, ft_key_events, mlx);
+	mlx_hook(mlx->win, 2, 1L << 0, ft_key_events, mlx);
+	mlx_hook(mlx->win, 17, 1L << 17, ft_red_cross, mlx);
 	mlx_loop(mlx->mlx);
 	return (0);
 }

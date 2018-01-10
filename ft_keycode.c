@@ -11,8 +11,14 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
-int			ft_key_events(int keycode, t_mlx *mlx)
+
+int		ft_red_cross(void)
+{
+	exit (0);
+	return (0);
+}
+
+int		ft_key_events(int keycode, t_mlx *mlx)
 {
 	double	old_dir_x;
 	double	old_dir_y;
@@ -21,7 +27,7 @@ int			ft_key_events(int keycode, t_mlx *mlx)
 
 	old_dir_x = mlx->player->dir_x;
 	old_dir_y = mlx->player->dir_y;
-	 old_plane_x= mlx->player->plane_x;
+	old_plane_x= mlx->player->plane_x;
 	old_plane_y = mlx->player->plane_y;
 	if (keycode == 53)
 		exit(1);

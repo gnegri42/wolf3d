@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
+
 static void			ft_fill_pixel(t_img *img, int x, int y, int color)
 {
 	int i;
