@@ -20,6 +20,7 @@ SRCS = 			main.c\
 				ft_init.c\
 				ft_calc.c\
 				ft_draw.c\
+				ft_move.c\
 
 OBJS = 			$(SRCS:.c=.o)
 

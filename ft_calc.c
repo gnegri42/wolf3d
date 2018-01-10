@@ -12,7 +12,7 @@
 
 #include "wolf3d.h"
 
-static void		ray_draw(t_mlx *mlx, int x)
+static void	ray_draw(t_mlx *mlx, int x)
 {
 	mlx->map->line_height = (int)(WIN_HEIGHT / mlx->player->ray->wall_dist);
 	mlx->map->pixel_start = -mlx->map->line_height / 2 + WIN_HEIGHT / 2;
@@ -24,7 +24,7 @@ static void		ray_draw(t_mlx *mlx, int x)
 	ft_draw_col(mlx, x);
 }
 
-static void		ray_cal_dist(t_player *player, t_ray *ray, t_map *map)
+static void	ray_cal_dist(t_player *player, t_ray *ray, t_map *map)
 {
 	while (ray->hit == 0)
 	{
@@ -53,7 +53,7 @@ static void		ray_cal_dist(t_player *player, t_ray *ray, t_map *map)
 	}
 }
 
-static void		ray_cal_step_side(t_ray *ray)
+static void	ray_cal_step_side(t_ray *ray)
 {
 	if (ray->dir_x < 0)
 	{
@@ -63,7 +63,8 @@ static void		ray_cal_step_side(t_ray *ray)
 	else
 	{
 		ray->step_x = 1;
-		ray->side_dist_x = ((int)ray->pos_x + 1 - ray->pos_x) * ray->delta_dist_x;
+		ray->side_dist_x = ((int)ray->pos_x + 1 - ray->pos_x)
+		* ray->delta_dist_x;
 	}
 	if (ray->dir_y < 0)
 	{
@@ -73,11 +74,12 @@ static void		ray_cal_step_side(t_ray *ray)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = ((int)ray->pos_y + 1 - ray->pos_y) * ray->delta_dist_y;
+		ray->side_dist_y = ((int)ray->pos_y + 1 - ray->pos_y)
+		* ray->delta_dist_y;
 	}
 }
 
-static void		ray_init(t_player *player, t_ray *ray, int x)
+static void	ray_init(t_player *player, t_ray *ray, int x)
 {
 	player->map_x = (int)ray->pos_x;
 	player->map_y = (int)ray->pos_y;
@@ -88,7 +90,7 @@ static void		ray_init(t_player *player, t_ray *ray, int x)
 			(ray->dir_x * ray->dir_x));
 	ray->delta_dist_y = sqrt(1 + (ray->dir_x * ray->dir_x) /
 			(ray->dir_y * ray->dir_y));
-	ray->hit= 0;
+	ray->hit = 0;
 	ray->side = -1;
 }
 

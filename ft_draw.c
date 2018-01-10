@@ -24,7 +24,8 @@ static unsigned int	ft_get_color(t_mlx *mlx)
 {
 	if (mlx->player->ray->side == 1)
 	{
-		if ((mlx->player->ray->step_x == -1 && mlx->player->ray->step_y == -1) ||
+		if ((mlx->player->ray->step_x == -1 &&
+			mlx->player->ray->step_y == -1) ||
 			(mlx->player->ray->step_x == 1 && mlx->player->ray->step_y == -1))
 			return (ORANGE);
 		if ((mlx->player->ray->step_x == -1 && mlx->player->ray->step_y == 1) ||

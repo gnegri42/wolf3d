@@ -37,12 +37,7 @@ static int	ft_find_position(t_mlx *mlx)
 	return (0);
 }
 
-/*
-Function that init the player position and the vectors in order to calculate the view.
-To be modified later to chage the initial position of the player
-*/
-
-int		ft_init_player(t_mlx *mlx)
+int			ft_init_player(t_mlx *mlx)
 {
 	t_player	*player;
 	t_ray		*ray;
