@@ -27,8 +27,8 @@ static int	ft_find_position(t_mlx *mlx)
 				j++;
 			else
 			{
-				mlx->player->pos_x = j;
-				mlx->player->pos_y = i;
+				mlx->player->pos_x = j + 0.5;
+				mlx->player->pos_y = i + 0.5;
 				return (0);
 			}
 		}
@@ -57,8 +57,8 @@ int		ft_init_player(t_mlx *mlx)
 	player->dir_x = 1;
 	player->dir_y = 0;
 	player->move = 0.5;
-	player->turn = 0.5;
-	player->plane_x = 5;
-	player->plane_y = 5;
+	player->turn = 0.05;
+	player->plane_x = 0;
+	player->plane_y = 0.66;
 	return (0);
 }

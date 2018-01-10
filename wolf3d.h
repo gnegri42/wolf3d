@@ -57,7 +57,7 @@ typedef struct		s_player
 	double			plane_x;
 	double			plane_y;
 	int				fov;
-	int				camera_x;
+	double			camera_x;
 	int				map_x;
 	int				map_y;
 	double			move;
