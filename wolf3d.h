@@ -33,6 +33,13 @@
 # define GREEN 0x25FF50
 # define ORANGE 0x00FFA500
 
+typedef struct		s_color
+{
+	int				col_x;
+	int				col_y;
+	int				col_xy;
+}					t_color;
+
 typedef struct		s_ray
 {
 	double			pos_x;
@@ -48,6 +55,7 @@ typedef struct		s_ray
 	int				texture_num;
 	int				texture_coord;
 	int				nb_max_texture;
+	t_color			*tex_col;
 	int				step_x;
 	int				step_y;
 	int				hit;
@@ -78,6 +86,7 @@ typedef struct		s_map
 	char			*str;
 	char			**content;
 	int				**tab;
+	int				**texture;
 	int				line_height;
 	int				pixel_start;
 	int				pixel_last;
@@ -110,6 +119,7 @@ int					ft_init_player(t_mlx *mlx);
 void				ft_calc(t_mlx *mlx, t_player *player);
 void				ft_draw_col(t_mlx *mlx, int x);
 int					ft_red_cross(void);
-void				ft_calc_pos_hit(t_ray *ray, t_map *map);
+void				ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player);
+void				ft_draw_texture(t_map *map, t_ray *ray);
 
 #endif

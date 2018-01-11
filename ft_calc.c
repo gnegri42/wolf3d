@@ -21,7 +21,7 @@ static void	ray_draw(t_mlx *mlx, int x)
 	mlx->map->pixel_last = mlx->map->line_height / 2 + WIN_HEIGHT / 2;
 	if (mlx->map->pixel_last >= WIN_HEIGHT)
 		mlx->map->pixel_last = WIN_HEIGHT - 1;
-	ft_calc_pos_hit(mlx->player->ray, mlx->map);
+	ft_calc_pos_hit(mlx->player->ray, mlx->map, mlx->player);
 	ft_draw_col(mlx, x);
 }
 

@@ -20,6 +20,19 @@ static void			ft_fill_pixel(t_img *img, int x, int y, int color)
 	img->str_img[i] = color;
 }
 
+static int	ft_text(t_mlx *mlx, int i)
+{
+	int d;
+	int texY;
+	int color;
+
+	ft_draw_texture(mlx->map, mlx->player->ray);
+	d = i * 256 - WIN_HEIGHT * 128 + mlx->map->line_height * 128;
+	texY = ((d * TEXTURE_HEIGHT) / mlx->map->line_height) / 256;
+	color = mlx->map->texture[mlx->player->ray->texture_num][TEXTURE_HEIGHT * texY + mlx->player->ray->texture_coord];
+	return (color);
+}
+/*
 static unsigned int	ft_get_color(t_mlx *mlx)
 {
 	if (mlx->player->ray->side == 1)
@@ -37,18 +50,21 @@ static unsigned int	ft_get_color(t_mlx *mlx)
 		return (GREEN);
 	return (0x0441FF);
 }
-
+*/
 void				ft_draw_col(t_mlx *mlx, int x)
 {
 	int		i;
 	int		color;
 
-	color = ft_get_color(mlx);
+	//color = ft_get_color(mlx);
 	i = 0;
 	while (i++ < mlx->map->pixel_start)
 		ft_fill_pixel(mlx->img, x, i, BLUE);
 	while (i++ <= mlx->map->pixel_last)
+	{
+		color = ft_text(mlx, i);
 		ft_fill_pixel(mlx->img, x, i, color);
+	}
 	while (i++ < WIN_HEIGHT)
 		ft_fill_pixel(mlx->img, x, i, BLACK);
 }
