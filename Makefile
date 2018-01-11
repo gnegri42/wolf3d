@@ -29,7 +29,7 @@ INC = 			libft.h\
 
 CC = 			gcc
 
-FLAGS = 		-Wall -Wextra -Werror
+FLAGS = 		-Wall -Wextra -Werror -flto
 
 FLAGS2 = 		-lmlx -framework OpenGl -framework AppKit
 
