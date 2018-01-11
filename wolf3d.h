@@ -22,8 +22,10 @@
 # include <sys/stat.h>
 # include <math.h>
 
-# define WIN_WIDTH	800
-# define WIN_HEIGHT	600
+# define WIN_WIDTH		800
+# define WIN_HEIGHT		600
+# define TEXTURE_WIDTH	64
+# define TEXTURE_HEIGHT	64
 
 # define BLACK 0x000000
 # define BLUE 0x0041FF
@@ -42,6 +44,10 @@ typedef struct		s_ray
 	double			delta_dist_x;
 	double			delta_dist_y;
 	double			wall_dist;
+	double			wall_hit;
+	int				texture_num;
+	int				texture_coord;
+	int				nb_max_texture;
 	int				step_x;
 	int				step_y;
 	int				hit;
@@ -104,5 +110,6 @@ int					ft_init_player(t_mlx *mlx);
 void				ft_calc(t_mlx *mlx, t_player *player);
 void				ft_draw_col(t_mlx *mlx, int x);
 int					ft_red_cross(void);
+void				ft_calc_pos_hit(t_ray *ray, t_map *map);
 
 #endif
