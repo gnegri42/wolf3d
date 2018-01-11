@@ -79,19 +79,6 @@ typedef struct		s_player
 	t_ray			*ray;
 }					t_player;
 
-typedef struct		s_map
-{
-	int				nb_line;
-	int				nb_int;
-	char			*str;
-	char			**content;
-	int				**tab;
-	int				**texture;
-	int				line_height;
-	int				pixel_start;
-	int				pixel_last;
-}					t_map;
-
 typedef struct		s_img
 {
 	void			*img;
@@ -100,6 +87,19 @@ typedef struct		s_img
 	int				s_l;
 	int				endian;
 }					t_img;
+
+typedef struct		s_map
+{
+	int				nb_line;
+	int				nb_int;
+	char			*str;
+	char			**content;
+	int				**tab;
+	int				line_height;
+	int				pixel_start;
+	int				pixel_last;
+	t_img			texture[4];
+}					t_map;
 
 typedef struct		s_mlx
 {
@@ -120,6 +120,7 @@ void				ft_calc(t_mlx *mlx, t_player *player);
 void				ft_draw_col(t_mlx *mlx, int x);
 int					ft_red_cross(void);
 void				ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player);
-void				ft_draw_texture(t_map *map, t_ray *ray);
+void				ft_draw_texture(t_mlx *mlx, t_map *map);
+//void				ft_draw_sky(t_mlx *mlx);
 
 #endif

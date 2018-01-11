@@ -101,7 +101,8 @@ void		ft_calc(t_mlx *mlx, t_player *player)
 
 	x = -1;
 	mlx->player->ray->pos_x = player->pos_x;
-	mlx->player->ray->pos_y = player->pos_y;
+	mlx->player->ray->pos_y = player->pos_y;	
+	//ft_draw_sky(mlx);
 	while (++x < WIN_WIDTH)
 	{
 		ray_init(player, mlx->player->ray, x);
