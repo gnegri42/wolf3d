@@ -12,15 +12,33 @@
 
 #include "wolf3d.h"
 
+static int ft_switch_tex(t_mlx *mlx)
+{
+	if (mlx->map->switch_tex == 0)
+	{
+		mlx->map->switch_tex = 1;
+		ft_calc(mlx, mlx->player);
+		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+		return (0);
+	}
+	else
+		mlx->map->switch_tex = 0;
+	ft_calc(mlx, mlx->player);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	return (0);
+}
+
 int		ft_red_cross(void)
 {
 	exit(0);
 	return (0);
 }
 
-int		ft_key_events(int keycode)
+int		ft_key_events(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
 		exit(1);
+	if (keycode == 17)
+		ft_switch_tex(mlx);
 	return (0);
 }

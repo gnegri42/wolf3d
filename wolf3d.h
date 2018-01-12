@@ -98,6 +98,7 @@ typedef struct		s_map
 	int				line_height;
 	int				pixel_start;
 	int				pixel_last;
+	int 			switch_tex;
 	t_img			texture[4];
 }					t_map;
 
@@ -114,7 +115,7 @@ int					ft_reader(int argc, char *argv, t_map *map);
 int					ft_atoi_wolf(char *str, int *i);
 int					ft_check_errors(char *str);
 int					ft_move_events(int keycode, t_mlx *mlx);
-int					ft_key_events(int keycode);
+int					ft_key_events(int keycode, t_mlx *mlx);
 int					ft_init_player(t_mlx *mlx);
 void				ft_calc(t_mlx *mlx, t_player *player);
 void				ft_draw_col(t_mlx *mlx, int x);
@@ -122,5 +123,6 @@ int					ft_red_cross(void);
 void				ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player);
 void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
+int					ft_get_initial_color(t_mlx *mlx);
 
 #endif

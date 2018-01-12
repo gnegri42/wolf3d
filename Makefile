@@ -22,6 +22,7 @@ SRCS = 			main.c\
 				ft_draw.c\
 				ft_move.c\
 				ft_textures.c\
+				ft_no_textures.c
 
 OBJS = 			$(SRCS:.c=.o)
 
@@ -40,7 +41,7 @@ LIB = 			libft/libft.a
 
 .PHONY: all clean fclean re
 
-all : 	lib $(NAME) 		
+all : 	lib $(NAME)
 
 lib :
 	@make -C $(LIB_PATH)

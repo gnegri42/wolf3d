@@ -76,13 +76,13 @@ static void	ft_rotate_left(t_mlx *mlx)
 
 int			ft_move_events(int keycode, t_mlx *mlx)
 {
-	if (keycode == 126)
+	if (keycode == 126 || keycode == 13)
 		ft_move_up(mlx);
-	if (keycode == 125)
+	if (keycode == 125 || keycode == 1)
 		ft_move_down(mlx);
-	if (keycode == 124)
+	if (keycode == 124 || keycode == 2)
 		ft_rotate_right(mlx);
-	if (keycode == 123)
+	if (keycode == 123 || keycode == 0)
 		ft_rotate_left(mlx);
 	return (0);
 }
