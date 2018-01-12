@@ -47,34 +47,43 @@ static int			ft_text(t_mlx *mlx, int x, int y)
 	color = mlx->map->texture[mlx->player->ray->texture_num].str_img[texY * 64 + mlx->player->ray->texture_coord % 64];
 	return (color);
 }
-/*
+
+static int			ft_text_ground(t_mlx *mlx, int x, int y)
+{
+	int d;
+	int j;
+	int texY;
+	int color;
+	
+	d = y * 256 - WIN_HEIGHT * 128 + mlx->map->line_height * 128;
+	texY = ((d * TEXTURE_HEIGHT) / mlx->map->line_height) / 256;
+	j = x + y * WIN_WIDTH;
+	color = mlx->map->texture[5].str_img[texY * 64 + mlx->player->ray->texture_coord % 64];
+	return (color);
+}
+
 void				ft_draw_sky(t_mlx *mlx)
 {
 	int		x;
 	int		y;
-	int 	d;
 	int 	j;
-	int 	texY;
 	int		color;
 
 	x = 0;
-	mlx->player->ray->texture_num = 6;
 	while (x < WIN_WIDTH)
 	{
 		y = 0;
-		while (y < WIN_HEIGHT)
+		while (y < WIN_HEIGHT / 2)
 		{
-			d = y * 256 - WIN_HEIGHT * 128 + mlx->map->line_height * 128;
-			texY = ((d * TEXTURE_HEIGHT) / mlx->map->line_height) / 256;
-			j = x + y * WIN_WIDTH;
-			color = mlx->map->texture[mlx->player->ray->texture_num].str_img[texY * 512 + mlx->player->ray->texture_coord];
+			j = x + y * 512;
+			color = mlx->map->texture[6].str_img[j];
 			ft_fill_pixel(mlx->img, x, y, color);
 			y++;
 		}
 		x++;
 	}
 }
-*/
+
 static unsigned int	ft_get_color(t_mlx *mlx, int x, int y)
 {
 	int color;
@@ -134,18 +143,19 @@ void				ft_draw_col(t_mlx *mlx, int x)
 
 	//color = ft_get_color(mlx);
 	i = 0;
-	while (i++ < mlx->map->pixel_start)
-		ft_fill_pixel(mlx->img, x, i, BLUE);
+	while (i < mlx->map->pixel_start)
+		//ft_fill_pixel(mlx->img, x, i, BLUE);
+		i++;
 	while (i++ <= mlx->map->pixel_last)
 	{
 		color = ft_get_color(mlx, x, i);
 		//color = ft_text(mlx, x, i);
 		ft_fill_pixel(mlx->img, x, i, color);
 	}
+	i--;
 	while (i++ < WIN_HEIGHT)
 	{
-		mlx->player->ray->texture_num = 5;
-		color = ft_text(mlx, x, i);
-		ft_fill_pixel(mlx->img, x, i, BLACK);
+		color = ft_text_ground(mlx, x, i);
+		ft_fill_pixel(mlx->img, x, i, color);
 	}
 }

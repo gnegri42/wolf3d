@@ -121,6 +121,6 @@ void				ft_draw_col(t_mlx *mlx, int x);
 int					ft_red_cross(void);
 void				ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player);
 void				ft_draw_texture(t_mlx *mlx, t_map *map);
-//void				ft_draw_sky(t_mlx *mlx);
+void				ft_draw_sky(t_mlx *mlx);
 
 #endif
