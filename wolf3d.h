@@ -22,7 +22,7 @@
 # include <sys/stat.h>
 # include <math.h>
 
-# define WIN_WIDTH		801
+# define WIN_WIDTH		800
 # define WIN_HEIGHT		600
 # define TEXTURE_WIDTH	64
 # define TEXTURE_HEIGHT	64
