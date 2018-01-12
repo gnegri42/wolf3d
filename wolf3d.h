@@ -22,7 +22,7 @@
 # include <sys/stat.h>
 # include <math.h>
 
-# define WIN_WIDTH		800
+# define WIN_WIDTH		801
 # define WIN_HEIGHT		600
 # define TEXTURE_WIDTH	64
 # define TEXTURE_HEIGHT	64
@@ -124,5 +124,6 @@ void				ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player);
 void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
 int					ft_get_initial_color(t_mlx *mlx);
+int					ft_find_position(t_mlx *mlx);
 
 #endif

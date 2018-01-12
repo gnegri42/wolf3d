@@ -89,6 +89,11 @@ static int	ft_check_read(int argc, char *argv, int *fd)
 		close(*fd);
 		return (-1);
 	}
+	if (WIN_WIDTH > 800 || WIN_HEIGHT > 600)
+	{
+		ft_putstr("Window size is too big : 800:600 is recommended.\n");
+		return(-1);
+	}
 	return (0);
 }
 

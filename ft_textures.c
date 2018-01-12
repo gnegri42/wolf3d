@@ -57,7 +57,6 @@ void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
 		ray->wall_hit = ray->pos_y + ray->wall_dist * ray->dir_y;
 	else
 		ray->wall_hit = ray->pos_x + ray->wall_dist * ray->dir_x;
-	//ray->wall_hit -= floor(ray->wall_hit);
 	ray->texture_coord = (int)(ray->wall_hit * (double)(TEXTURE_WIDTH));
 	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1 && ray->dir_y < 0))
 		ray->texture_coord = TEXTURE_WIDTH - ray->texture_coord - 1;

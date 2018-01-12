@@ -12,7 +12,7 @@
 
 #include "wolf3d.h"
 
-static int	ft_find_position(t_mlx *mlx)
+int	ft_find_position(t_mlx *mlx)
 {
 	int i;
 	int j;
