@@ -70,6 +70,7 @@ FILES =		ft_memset.c\
 			ft_lstadd.c\
 			ft_lstiter.c\
 			ft_lstmap.c\
+			ft_strjoin_delete.c\
 			get_next_line.c\
 			ft_getnbr.c\
 
