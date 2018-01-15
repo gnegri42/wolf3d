@@ -56,8 +56,6 @@ int			ft_init_player(t_mlx *mlx)
 	player->plane_x = 0;
 	player->plane_y = 0.66;
 	mlx->map->switch_tex = 0;
-	//mlx->map->switch_reset = 0;
-	//mlx->map->reset_validation = 0;
 	ft_draw_texture(mlx, mlx->map);
 	return (0);
 }

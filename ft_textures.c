@@ -73,17 +73,17 @@ void		ft_draw_texture(t_mlx *mlx, t_map *map)
 
 	a = 64;
 	b = 64;
-	map->texture[0].img = mlx_xpm_file_to_image(mlx->mlx, "textures/wood.xpm", &a, &b);
+	map->texture[0].img = mlx_xpm_file_to_image(mlx->mlx, "textures/emerald_block.xpm", &a, &b);
 	map->texture[0].str_img = (int *)mlx_get_data_addr(map->texture[0].img, &map->texture[0].bpp,
 			&map->texture[0].s_l, &map->texture[0].endian);
-	map->texture[1].img = mlx_xpm_file_to_image(mlx->mlx, "textures/stone.xpm", &a, &b);
+	map->texture[1].img = mlx_xpm_file_to_image(mlx->mlx, "textures/bookshelf.xpm", &a, &b);
 	map->texture[1].str_img = (int *)mlx_get_data_addr(map->texture[1].img, &map->texture[1].bpp,
 			&map->texture[1].s_l, &map->texture[1].endian);
-	map->texture[2].img = mlx_xpm_file_to_image(mlx->mlx, "textures/mossy.xpm", &a, &b);
+	map->texture[2].img = mlx_xpm_file_to_image(mlx->mlx, "textures/daylight_detector_top.xpm", &a, &b);
 	map->texture[2].str_img = (int *)mlx_get_data_addr(map->texture[2].img, &map->texture[2].bpp,
 			&map->texture[2].s_l, &map->texture[2].endian);
 	map->texture[3].img = mlx_xpm_file_to_image(mlx->mlx,
-			"textures/redbrick.xpm", &a, &b);
+			"textures/door_iron_lower.xpm", &a, &b);
 	map->texture[3].str_img = (int *)mlx_get_data_addr(map->texture[3].img, &map->texture[3].bpp,
 			&map->texture[3].s_l, &map->texture[3].endian);
 	map->texture[4].img = mlx_xpm_file_to_image(mlx->mlx, "textures/wood.xpm", &a, &b);
