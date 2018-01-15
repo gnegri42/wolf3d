@@ -22,7 +22,8 @@ SRCS = 			main.c\
 				ft_draw.c\
 				ft_move.c\
 				ft_textures.c\
-				ft_no_textures.c
+				ft_no_textures.c\
+				ft_reset.c
 
 OBJS = 			$(SRCS:.c=.o)
 

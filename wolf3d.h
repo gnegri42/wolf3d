@@ -32,6 +32,8 @@
 # define WHITE 0xFFFFFF
 # define GREEN 0x25FF50
 # define ORANGE 0x00FFA500
+# define RED 0xFF0000
+
 
 typedef struct		s_color
 {
@@ -104,6 +106,8 @@ typedef struct		s_map
 	int				pixel_start;
 	int				pixel_last;
 	int 			switch_tex;
+	int 			switch_reset;
+	int 			reset_validation;
 	t_img			texture[4];
 }					t_map;
 
@@ -130,6 +134,7 @@ void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
 int					ft_get_initial_color(t_mlx *mlx);
 int					ft_find_position(t_mlx *mlx);
-void		ft_calc_floor(t_mlx *mlx, t_ray *ray);
+void				ft_calc_floor(t_mlx *mlx, t_ray *ray);
+//void				ft_ask_reset(t_mlx *mlx);
 
 #endif
