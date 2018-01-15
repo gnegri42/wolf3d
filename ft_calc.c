@@ -111,4 +111,5 @@ void		ft_calc(t_mlx *mlx, t_player *player)
 		ray_cal_dist(player, mlx->player->ray, mlx->map);
 		ray_draw(mlx, x);
 	}
+	ft_weapon_handling(mlx);
 }

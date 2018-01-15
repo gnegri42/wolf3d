@@ -12,6 +12,13 @@
 
 #include "wolf3d.h"
 
+int		ft_expose_hook(t_mlx *mlx)
+{
+	ft_calc(mlx, mlx->player);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	return (0);
+}
+
 static int ft_switch_tex(t_mlx *mlx)
 {
 	if (mlx->map->switch_tex == 0)
@@ -39,8 +46,9 @@ static void    ft_reset(t_mlx *mlx)
        mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 }
 
-int		ft_red_cross(void)
+int		ft_red_cross(t_mlx *mlx)
 {
+	mlx_destroy_image(mlx->mlx, mlx->img->img);
 	exit(0);
 	return (0);
 }
@@ -48,10 +56,15 @@ int		ft_red_cross(void)
 int		ft_key_events(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
+	{
+		mlx_destroy_image(mlx->mlx, mlx->img->img);
 		exit(1);
+	}
 	if (keycode == 17)
 		ft_switch_tex(mlx);
 	if (keycode == 51)
 		ft_reset(mlx);
+	if (keycode == 76)
+		mlx->player->shoot = 1;
 	return (0);
 }

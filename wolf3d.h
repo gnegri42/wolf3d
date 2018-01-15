@@ -83,6 +83,8 @@ typedef struct		s_player
 	int				map_y;
 	double			move;
 	double			turn;
+	int 			wpstate;
+	int 			shoot;
 	t_ray			*ray;
 }					t_player;
 
@@ -126,12 +128,15 @@ int					ft_key_events(int keycode, t_mlx *mlx);
 int					ft_init_player(t_mlx *mlx);
 void				ft_calc(t_mlx *mlx, t_player *player);
 void				ft_draw_col(t_mlx *mlx, int x);
-int					ft_red_cross(void);
+int					ft_red_cross(t_mlx *mlx);
 void				ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player);
 void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
 int					ft_get_initial_color(t_mlx *mlx);
 int					ft_find_position(t_mlx *mlx);
 //void				ft_calc_floor(t_mlx *mlx, t_ray *ray);
+void				ft_weapon_handling(t_mlx *mlx);
+void				ft_fill_pixel(t_img *img, int x, int y, int color);
+int					ft_expose_hook(t_mlx *mlx);
 
 #endif

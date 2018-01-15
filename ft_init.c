@@ -55,6 +55,8 @@ int			ft_init_player(t_mlx *mlx)
 	player->turn = 0.1;
 	player->plane_x = 0;
 	player->plane_y = 0.66;
+	mlx->player->wpstate = 0;
+	mlx->player->shoot = 0;
 	mlx->map->switch_tex = 0;
 	ft_draw_texture(mlx, mlx->map);
 	return (0);

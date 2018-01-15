@@ -54,6 +54,27 @@ void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
 	ray->texture_coord = abs(ray->texture_coord);
 }
 
+static void	ft_draw_texture3(t_mlx *mlx, t_map *map, int a, int b)
+{
+	a = 128;
+	b = 128;
+	map->texture[7].img = mlx_xpm_file_to_image(mlx->mlx, "textures/pistol1.xpm", &a, &b);
+	map->texture[7].str_img = (int *)mlx_get_data_addr(map->texture[7].img, &map->texture[7].bpp,
+			&map->texture[7].s_l, &map->texture[7].endian);
+	map->texture[8].img = mlx_xpm_file_to_image(mlx->mlx, "textures/pistol2.xpm", &a, &b);
+	map->texture[8].str_img = (int *)mlx_get_data_addr(map->texture[8].img, &map->texture[8].bpp,
+			&map->texture[8].s_l, &map->texture[8].endian);
+	map->texture[9].img = mlx_xpm_file_to_image(mlx->mlx, "textures/pistol3.xpm", &a, &b);
+	map->texture[9].str_img = (int *)mlx_get_data_addr(map->texture[9].img, &map->texture[9].bpp,
+			&map->texture[9].s_l, &map->texture[9].endian);
+	map->texture[10].img = mlx_xpm_file_to_image(mlx->mlx, "textures/pistol4.xpm", &a, &b);
+	map->texture[10].str_img = (int *)mlx_get_data_addr(map->texture[10].img, &map->texture[10].bpp,
+			&map->texture[10].s_l, &map->texture[10].endian);
+	map->texture[11].img = mlx_xpm_file_to_image(mlx->mlx, "textures/pistol5.xpm", &a, &b);
+	map->texture[11].str_img = (int *)mlx_get_data_addr(map->texture[11].img, &map->texture[11].bpp,
+			&map->texture[11].s_l, &map->texture[11].endian);
+}
+
 static void	ft_draw_texture2(t_mlx *mlx, t_map *map, int a, int b)
 {
 	map->texture[5].img = mlx_xpm_file_to_image(mlx->mlx, "textures/sand.xpm", &a, &b);
@@ -90,4 +111,5 @@ void		ft_draw_texture(t_mlx *mlx, t_map *map)
 	map->texture[4].str_img = (int *)mlx_get_data_addr(map->texture[4].img, &map->texture[4].bpp,
 			&map->texture[4].s_l, &map->texture[4].endian);
 	ft_draw_texture2(mlx, map, a, b);
+	ft_draw_texture3(mlx, map, a, b);
 }

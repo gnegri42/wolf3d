@@ -27,7 +27,7 @@ static int			ft_text_ground(t_mlx *mlx, int x, int y)
 	return (color);
 }
 
-static void			ft_fill_pixel(t_img *img, int x, int y, int color)
+void			ft_fill_pixel(t_img *img, int x, int y, int color)
 {
 	int i;
 
