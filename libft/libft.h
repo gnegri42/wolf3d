@@ -95,7 +95,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					ft_getnbr(char *str);
-char				*ft_strjoin_delete(char const *s1, char const *s2, int n1, int n2);
 
 int					get_next_line(const int fd, char **line);
 #endif
