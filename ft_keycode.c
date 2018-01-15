@@ -28,6 +28,17 @@ static int ft_switch_tex(t_mlx *mlx)
 	return (0);
 }
 
+static void    ft_reset(t_mlx *mlx)
+{
+       ft_find_position(mlx);
+       mlx->player->dir_x = 1;
+       mlx->player->dir_y = 0;
+       mlx->player->plane_x = 0;
+       mlx->player->plane_y = 0.66;
+       ft_calc(mlx, mlx->player);
+       mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+}
+
 int		ft_red_cross(void)
 {
 	exit(0);
@@ -40,7 +51,7 @@ int		ft_key_events(int keycode, t_mlx *mlx)
 		exit(1);
 	if (keycode == 17)
 		ft_switch_tex(mlx);
-	//if (keycode == 51)
-	//	ft_ask_reset(mlx);
+	if (keycode == 51)
+		ft_reset(mlx);
 	return (0);
 }

@@ -54,9 +54,9 @@ typedef struct		s_ray
 	double			delta_dist_y;
 	double			wall_dist;
 	double			wall_hit;
-	double			floor_pos_x;
-	double			floor_pos_y;
-	double			wall_dist_bottom;
+//	double			floor_pos_x;
+//	double			floor_pos_y;
+//	double			wall_dist_bottom;
 	int				texture_num;
 	int				texture_coord;
 	int				nb_max_texture;
@@ -76,8 +76,8 @@ typedef struct		s_player
 	double			plane_x;
 	double			plane_y;
 	double			camera_x;
-	double			dist;
-	double			current_dist;
+//	double			dist;
+//	double			current_dist;
 	int				fov;
 	int				map_x;
 	int				map_y;
@@ -106,8 +106,6 @@ typedef struct		s_map
 	int				pixel_start;
 	int				pixel_last;
 	int 			switch_tex;
-	int 			switch_reset;
-	int 			reset_validation;
 	t_img			texture[4];
 }					t_map;
 
@@ -134,7 +132,6 @@ void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
 int					ft_get_initial_color(t_mlx *mlx);
 int					ft_find_position(t_mlx *mlx);
-void				ft_calc_floor(t_mlx *mlx, t_ray *ray);
-//void				ft_ask_reset(t_mlx *mlx);
+//void				ft_calc_floor(t_mlx *mlx, t_ray *ray);
 
 #endif
