@@ -12,7 +12,7 @@
 
 #include "wolf3d.h"
 #include <stdio.h>
-
+/*
 static int			ft_text_ground(t_mlx *mlx, int x, int y)
 {
 	int d;
@@ -26,7 +26,7 @@ static int			ft_text_ground(t_mlx *mlx, int x, int y)
 	color = mlx->map->texture[5].str_img[texY * 64 + mlx->player->ray->texture_coord % 64];
 	return (color);
 }
-
+*/
 static void			ft_fill_pixel(t_img *img, int x, int y, int color)
 {
 	int i;
@@ -105,6 +105,25 @@ void				ft_draw_sky(t_mlx *mlx)
 	}
 }
 
+static int ft_draw_floor(t_mlx *mlx, t_ray *ray, int y)
+{
+	double weight;
+	double current_floor_x;
+	double current_floor_y;
+	int	floor_texX;
+	int floor_texY;
+	int color;
+
+	mlx->player->current_dist = WIN_HEIGHT / (2.0 * y - WIN_HEIGHT);
+	weight = (mlx->player->current_dist - mlx->player->dist) / (ray->wall_dist_bottom - mlx->player->dist);
+	current_floor_x = weight * ray->floor_pos_x + (1.0 - weight) * ray->floor_pos_x;
+	current_floor_y = weight * ray->floor_pos_y + (1.0 - weight) * ray->floor_pos_y;
+	floor_texX = (int)(current_floor_x * TEXTURE_WIDTH) % TEXTURE_WIDTH;
+	floor_texY = (int)(current_floor_y * TEXTURE_HEIGHT) % TEXTURE_HEIGHT;
+	color = mlx->map->texture[5].str_img[floor_texY  + floor_texX * TEXTURE_WIDTH];
+	return (color);
+}
+
 void				ft_draw_col(t_mlx *mlx, int x)
 {
 	int		i;
@@ -132,7 +151,7 @@ void				ft_draw_col(t_mlx *mlx, int x)
 			ft_fill_pixel(mlx->img, x, i, BLACK);
 		else
 		{
-			color = ft_text_ground(mlx, x, i);
+			color = ft_draw_floor(mlx, mlx->player->ray, i);
 			ft_fill_pixel(mlx->img, x, i, color);
 		}
 	}

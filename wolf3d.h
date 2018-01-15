@@ -52,6 +52,9 @@ typedef struct		s_ray
 	double			delta_dist_y;
 	double			wall_dist;
 	double			wall_hit;
+	double			floor_pos_x;
+	double			floor_pos_y;
+	double			wall_dist_bottom;
 	int				texture_num;
 	int				texture_coord;
 	int				nb_max_texture;
@@ -70,8 +73,10 @@ typedef struct		s_player
 	double			dir_y;
 	double			plane_x;
 	double			plane_y;
-	int				fov;
 	double			camera_x;
+	double			dist;
+	double			current_dist;
+	int				fov;
 	int				map_x;
 	int				map_y;
 	double			move;
@@ -125,5 +130,6 @@ void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
 int					ft_get_initial_color(t_mlx *mlx);
 int					ft_find_position(t_mlx *mlx);
+void		ft_calc_floor(t_mlx *mlx, t_ray *ray);
 
 #endif
