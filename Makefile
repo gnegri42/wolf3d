@@ -25,6 +25,7 @@ SRCS = 			main.c\
 				ft_no_textures.c\
 				ft_weapon.c\
 				ft_mouse_events.c\
+				ft_minimap.c\
 
 OBJS = 			$(SRCS:.c=.o)
 
