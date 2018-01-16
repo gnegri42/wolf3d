@@ -24,6 +24,7 @@ SRCS = 			main.c\
 				ft_textures.c\
 				ft_no_textures.c\
 				ft_weapon.c\
+				ft_mouse_events.c\
 
 OBJS = 			$(SRCS:.c=.o)
 
@@ -51,7 +52,7 @@ $(NAME) : $(OBJS)
 	@echo "\033[1;91mCompilation... wolf3d\033[0m"
 	@$(CC) $(FLAGS) -c $(SRCS)
 	@$(CC) $(FLAGS) $(FLAGS2) -o $(NAME) $(OBJS) $(LIB) -Wunused-command-line-argument
-	@echo "\033[1;91mCompilation complete !\033[0m" 
+	@echo "\033[1;91mCompilation complete !\033[0m"
 
 $(OBJS): $(SRCS)
 	@$(CC) $(FLAGS) -c $< -o $@
