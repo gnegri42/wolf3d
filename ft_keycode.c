@@ -64,7 +64,5 @@ int		ft_key_events(int keycode, t_mlx *mlx)
 		ft_switch_tex(mlx);
 	if (keycode == 51)
 		ft_reset(mlx);
-	if (keycode == 76)
-		mlx->player->shoot = 1;
 	return (0);
 }

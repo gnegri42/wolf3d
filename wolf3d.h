@@ -138,5 +138,6 @@ int					ft_find_position(t_mlx *mlx);
 void				ft_weapon_handling(t_mlx *mlx);
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
 int					ft_expose_hook(t_mlx *mlx);
+int					ft_mouse_events(int button, int x, int y, t_mlx *mlx);
 
 #endif
