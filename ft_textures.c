@@ -12,7 +12,7 @@
 
 #include "wolf3d.h"
 
-/*
+
 void		ft_calc_floor(t_mlx *mlx, t_ray *ray)
 {
 	if (ray->side == 0 && ray->dir_x > 0)
@@ -40,7 +40,7 @@ void		ft_calc_floor(t_mlx *mlx, t_ray *ray)
 	if (mlx->map->pixel_last < 0)
 		mlx->map->pixel_last = WIN_HEIGHT;
 }
-*/
+
 void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
 {
 	ray->texture_num = map->tab[player->map_x][player->map_y] - 1;
