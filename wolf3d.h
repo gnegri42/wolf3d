@@ -108,7 +108,7 @@ typedef struct		s_map
 	int				pixel_start;
 	int				pixel_last;
 	int 			switch_tex;
-	t_img			texture[11];
+	t_img			*texture;
 }					t_map;
 
 typedef struct		s_mlx
