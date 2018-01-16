@@ -18,26 +18,40 @@ static void	display_weapon(t_mlx *mlx, int state)
 	int y;
 	int countx;
 	int county;
+	int resize;
 
-	y = WIN_HEIGHT - 256;
+	if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
+		resize = 1;
+	else
+		resize = 2;
+	y = WIN_HEIGHT - (256 / resize);
 	county = 0;
 	while (y < WIN_HEIGHT)
 	{
 		countx = 0;
 		x = WIN_WIDTH / 2 - 30;
-		while (x < WIN_WIDTH / 2 + 256)
+		while (x < WIN_WIDTH / 2 + (256 / resize))
 		{
 			if (mlx->map->texture[state].str_img[countx + county * 128] != 0x980088)
 			{
 				ft_fill_pixel(mlx->img, x, y, mlx->map->texture[state].str_img[countx + county * 128]);
-				ft_fill_pixel(mlx->img, x + 1, y, mlx->map->texture[state].str_img[countx + county * 128]);
-				ft_fill_pixel(mlx->img, x, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
-				ft_fill_pixel(mlx->img, x + 1, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
+				if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
+				{
+					ft_fill_pixel(mlx->img, x + 1, y, mlx->map->texture[state].str_img[countx + county * 128]);
+					ft_fill_pixel(mlx->img, x, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
+					ft_fill_pixel(mlx->img, x + 1, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
+				}
 			}
-			x += 2;
+			if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
+				x += 2;
+			else
+				x++;
 			countx++;
 		}
-		y += 2;
+		if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
+			y += 2;
+		else
+			y++;
 		county++;
 	}
 }
@@ -45,11 +59,11 @@ static void	display_weapon(t_mlx *mlx, int state)
 void	ft_weapon_handling(t_mlx *mlx)
 {
 	if (mlx->player->shoot == 1)
-		mlx->player->wpstate++;
-	if (mlx->player->wpstate > 4)
+		mlx->player->weapon++;
+	if (mlx->player->weapon > 4)
 	{
-		mlx->player->wpstate = 0;
+		mlx->player->weapon = 0;
 		mlx->player->shoot = 0;
 	}
-	display_weapon(mlx, mlx->player->wpstate + 7);
+	display_weapon(mlx, mlx->player->weapon + 7);
 }

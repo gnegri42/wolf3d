@@ -48,7 +48,7 @@ static void    ft_reset(t_mlx *mlx)
 
 int		ft_red_cross(t_mlx *mlx)
 {
-	mlx_destroy_image(mlx->mlx, mlx->img->img);
+	ft_exit_properly(mlx);
 	exit(0);
 	return (0);
 }
@@ -57,17 +57,17 @@ int		ft_key_events(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
 	{
-		mlx_destroy_image(mlx->mlx, mlx->img->img);
+		ft_exit_properly(mlx);
 		exit(1);
 	}
 	if (keycode == 17)
 		ft_switch_tex(mlx);
 	if (keycode == 51)
 		ft_reset(mlx);
-	if (keycode == 257)
+	/*if (keycode == 257)
 		{
 			mlx->player->move = 0.5;
 			mlx->player->turn = 0.25;
-		}
+		}*/
 	return (0);
 }
