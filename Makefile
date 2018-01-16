@@ -25,6 +25,8 @@ SRCS = 			main.c\
 				ft_no_textures.c\
 				ft_weapon.c\
 				ft_mouse_events.c\
+				ft_keycode2.c\
+				ft_exit_properly.c\
 
 OBJS = 			$(SRCS:.c=.o)
 

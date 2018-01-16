@@ -83,7 +83,7 @@ typedef struct		s_player
 	int				map_y;
 	double			move;
 	double			turn;
-	int 			wpstate;
+	int 			weapon;
 	int 			shoot;
 	t_ray			*ray;
 }					t_player;
@@ -108,7 +108,7 @@ typedef struct		s_map
 	int				pixel_start;
 	int				pixel_last;
 	int 			switch_tex;
-	t_img			texture[4];
+	t_img			texture[11];
 }					t_map;
 
 typedef struct		s_mlx
@@ -117,7 +117,7 @@ typedef struct		s_mlx
 	void			*win;
 	t_img			*img;
 	t_map			*map;
-	t_player		*player;
+	t_player	*player;
 }					t_mlx;
 
 int					ft_reader(int argc, char *argv, t_map *map);
@@ -139,5 +139,7 @@ void				ft_weapon_handling(t_mlx *mlx);
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
 int					ft_expose_hook(t_mlx *mlx);
 int					ft_mouse_events(int button, int x, int y, t_mlx *mlx);
+//int					ft_key_release(int keycode, t_mlx *mlx);
+int					ft_exit_properly(t_mlx *mlx);
 
 #endif
