@@ -159,4 +159,5 @@ void				ft_draw_col(t_mlx *mlx, int x)
 		}
 		i++;
 	}
+	ft_draw_minimap(mlx);
 }
