@@ -146,6 +146,7 @@ void				ft_draw_col(t_mlx *mlx, int x)
 		ft_fill_pixel(mlx->img, x, i, color);
 		i++;
 	}
+	i--;
 	while (i < WIN_HEIGHT)
 	{
 		if (mlx->map->switch_tex == 1)
