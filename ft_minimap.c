@@ -44,7 +44,7 @@ int			ft_draw_minimap(t_mlx *mlx)
 		while (init_y < mlx->map->nb_line)
 		{
 			if (mlx->map->tab[init_y][init_x] > 0)
-				ft_draw_square(mlx, init_x, init_y, size, WHITE);
+				ft_draw_square(mlx, init_y, init_x, size, WHITE);
 			init_y++;
 		}
 		init_x++;
