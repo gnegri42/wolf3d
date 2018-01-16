@@ -19,7 +19,7 @@ static int			ft_text_ground(t_mlx *mlx, int x, int y)
 	int j;
 	int texY;
 	int color;
-	
+
 	d = y * 256 - WIN_HEIGHT * 128 + mlx->map->line_height * 128;
 	texY = ((d * TEXTURE_HEIGHT) / mlx->map->line_height) / 256;
 	j = x + y * WIN_WIDTH;
@@ -41,7 +41,7 @@ static int			ft_text(t_mlx *mlx, int x, int y)
 	int j;
 	int texY;
 	int color;
-	
+
 	d = y * 256 - WIN_HEIGHT * 128 + mlx->map->line_height * 128;
 	texY = ((d * TEXTURE_HEIGHT) / mlx->map->line_height) / 256;
 	j = x + y * WIN_WIDTH;
@@ -61,14 +61,14 @@ static unsigned int	ft_get_color(t_mlx *mlx, int x, int y)
 		{
 			mlx->player->ray->texture_num = 0;
 			color = ft_text(mlx, x, y);
-			return (color);			
+			return (color);
 		}
 		if ((mlx->player->ray->step_x == -1 && mlx->player->ray->step_y == 1) ||
 			(mlx->player->ray->step_x == 1 && mlx->player->ray->step_y == 1))
 		{
 			mlx->player->ray->texture_num = 1;
 			color = ft_text(mlx, x, y);
-			return (color);	
+			return (color);
 		}
 	}
 	if ((mlx->player->ray->step_x == -1 && mlx->player->ray->step_y == -1) ||
@@ -76,11 +76,11 @@ static unsigned int	ft_get_color(t_mlx *mlx, int x, int y)
 	{
 		mlx->player->ray->texture_num = 2;
 		color = ft_text(mlx, x, y);
-		return (color);			
+		return (color);
 	}
 	mlx->player->ray->texture_num = 3;
 	color = ft_text(mlx, x, y);
-	return (color);			
+	return (color);
 }
 
 void				ft_draw_sky(t_mlx *mlx)
@@ -136,16 +136,17 @@ void				ft_draw_col(t_mlx *mlx, int x)
 			ft_fill_pixel(mlx->img, x, i, BLUE);
 		i++;
 	}
-	while (i++ <= mlx->map->pixel_last)
+	while (i <= mlx->map->pixel_last)
 	{
 		if (mlx->map->switch_tex == 1)
 			color = ft_get_initial_color(mlx);
 		else
 			color = ft_get_color(mlx, x, i);
 		ft_fill_pixel(mlx->img, x, i, color);
+		i++;
 	}
 	i--;
-	while (i++ < WIN_HEIGHT)
+	while (i < WIN_HEIGHT)
 	{
 		if (mlx->map->switch_tex == 1)
 			ft_fill_pixel(mlx->img, x, i, BLACK);
@@ -153,7 +154,9 @@ void				ft_draw_col(t_mlx *mlx, int x)
 		{
 			//color = ft_draw_floor(mlx, mlx->player->ray, i);
 			color = ft_text_ground(mlx, x, i);
-			ft_fill_pixel(mlx->img, x, i, color);
+			//ft_fill_pixel(mlx->img, x, i, color);
+			ft_fill_pixel(mlx->img, x, i, BLACK);
 		}
+		i++;
 	}
 }

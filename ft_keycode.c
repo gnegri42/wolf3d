@@ -64,5 +64,10 @@ int		ft_key_events(int keycode, t_mlx *mlx)
 		ft_switch_tex(mlx);
 	if (keycode == 51)
 		ft_reset(mlx);
+	if (keycode == 257)
+		{
+			mlx->player->move = 0.5;
+			mlx->player->turn = 0.25;
+		}
 	return (0);
 }
