@@ -54,9 +54,9 @@ typedef struct		s_ray
 	double			delta_dist_y;
 	double			wall_dist;
 	double			wall_hit;
-//	double			floor_pos_x;
-//	double			floor_pos_y;
-//	double			wall_dist_bottom;
+	double			floor_pos_x;
+	double			floor_pos_y;
+	double			wall_dist_bottom;
 	int				texture_num;
 	int				texture_coord;
 	int				nb_max_texture;
@@ -76,8 +76,8 @@ typedef struct		s_player
 	double			plane_x;
 	double			plane_y;
 	double			camera_x;
-//	double			dist;
-//	double			current_dist;
+	double			dist;
+	double			current_dist;
 	int				fov;
 	int				map_x;
 	int				map_y;
