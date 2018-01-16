@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>
 
 static void	display_weapon(t_mlx *mlx, int state)
 {
@@ -59,11 +60,19 @@ static void	display_weapon(t_mlx *mlx, int state)
 void	ft_weapon_handling(t_mlx *mlx)
 {
 	if (mlx->player->shoot == 1)
+	{
 		mlx->player->weapon++;
+		ft_calc_weapon_hit(mlx, mlx->player);
+	}
 	if (mlx->player->weapon > 4)
 	{
 		mlx->player->weapon = 0;
 		mlx->player->shoot = 0;
+	}
+	if (mlx->map->tex_hit > 1 && mlx->player->ray->texture_num < 7 && mlx->player->weapon == 1)
+	{
+			mlx->map->tex_change += 1;
+			printf("%d\n", mlx->map->tex_hit);
 	}
 	display_weapon(mlx, mlx->player->weapon + 7);
 }

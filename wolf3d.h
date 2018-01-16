@@ -108,6 +108,8 @@ typedef struct		s_map
 	int				pixel_start;
 	int				pixel_last;
 	int 			switch_tex;
+	int 			tex_hit;
+	int 			tex_change;
 	t_img			*texture;
 }					t_map;
 
@@ -130,6 +132,7 @@ void				ft_calc(t_mlx *mlx, t_player *player);
 void				ft_draw_col(t_mlx *mlx, int x);
 int					ft_red_cross(t_mlx *mlx);
 void				ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player);
+void				ft_calc_weapon_hit(t_mlx *mlx, t_player *player);
 void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
 int					ft_get_initial_color(t_mlx *mlx);
