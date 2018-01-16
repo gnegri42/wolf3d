@@ -17,22 +17,22 @@ void		ft_calc_floor(t_mlx *mlx, t_ray *ray)
 {
 	if (ray->side == 0 && ray->dir_x > 0)
 	{
-		ray->floor_pos_x = mlx->player->map_x;	
+		ray->floor_pos_x = mlx->player->map_x;
 		ray->floor_pos_y = mlx->player->map_y + ray->wall_hit;
 	}
 	else if (ray->side == 0 && ray->dir_x < 0)
 	{
-		ray->floor_pos_x = mlx->player->map_x + 1.0;	
+		ray->floor_pos_x = mlx->player->map_x + 1.0;
 		ray->floor_pos_y = mlx->player->map_y + ray->wall_hit;
 	}
 	else if (ray->side == 1 && ray->dir_y > 0)
 	{
-		ray->floor_pos_x = mlx->player->map_x + ray->wall_hit;	
+		ray->floor_pos_x = mlx->player->map_x + ray->wall_hit;
 		ray->floor_pos_y = mlx->player->map_y;
 	}
 	else
 	{
-		ray->floor_pos_x = mlx->player->map_x + ray->wall_hit;	
+		ray->floor_pos_x = mlx->player->map_x + ray->wall_hit;
 		ray->floor_pos_y = mlx->player->map_y + 1.0;
 	}
 	ray->wall_dist_bottom = ray->wall_dist;
@@ -92,6 +92,7 @@ void		ft_draw_texture(t_mlx *mlx, t_map *map)
 	int 	a;
 	int		b;
 
+	map->texture = malloc(sizeof(t_img) * 12);
 	a = 64;
 	b = 64;
 	map->texture[0].img = mlx_xpm_file_to_image(mlx->mlx, "textures/emerald_block.xpm", &a, &b);

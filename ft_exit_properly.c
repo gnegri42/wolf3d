@@ -23,7 +23,8 @@ static void			ft_wolf_free_image(t_mlx *mlx)
     mlx_destroy_image(mlx->mlx, mlx->map->texture[x].img);
     x++;
  }
-  mlx_destroy_image(mlx->mlx, mlx->img->img);
+ free(mlx->map->texture);
+ mlx_destroy_image(mlx->mlx, mlx->img->img);
 }
 
 static void			ft_wolf_free_map(t_mlx *mlx)
