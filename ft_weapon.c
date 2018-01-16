@@ -19,20 +19,25 @@ static void	display_weapon(t_mlx *mlx, int state)
 	int countx;
 	int county;
 
-	y = WIN_HEIGHT - 128;
+	y = WIN_HEIGHT - 256;
 	county = 0;
 	while (y < WIN_HEIGHT)
 	{
 		countx = 0;
-		x = WIN_WIDTH / 2;
-		while (x < WIN_WIDTH / 2 + 128)
+		x = WIN_WIDTH / 2 - 30;
+		while (x < WIN_WIDTH / 2 + 256)
 		{
 			if (mlx->map->texture[state].str_img[countx + county * 128] != 0x980088)
+			{
 				ft_fill_pixel(mlx->img, x, y, mlx->map->texture[state].str_img[countx + county * 128]);
-			x++;
+				ft_fill_pixel(mlx->img, x + 1, y, mlx->map->texture[state].str_img[countx + county * 128]);
+				ft_fill_pixel(mlx->img, x, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
+				ft_fill_pixel(mlx->img, x + 1, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
+			}
+			x += 2;
 			countx++;
 		}
-		y++;
+		y += 2;
 		county++;
 	}
 }
