@@ -58,6 +58,7 @@ int			ft_init_player(t_mlx *mlx)
 	mlx->player->weapon = 0;
 	mlx->player->shoot = 0;
 	mlx->map->switch_tex = 0;
+	mlx->map->show_map = 0;
 	ft_draw_texture(mlx, mlx->map);
 	return (0);
 }

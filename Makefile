@@ -28,6 +28,7 @@ SRCS = 			main.c\
 				ft_minimap.c\
 				ft_keycode2.c\
 				ft_exit_properly.c\
+				ft_calc_weapon_hit.c\
 
 OBJS = 			$(SRCS:.c=.o)
 

@@ -159,5 +159,6 @@ void				ft_draw_col(t_mlx *mlx, int x)
 		}
 		i++;
 	}
-	ft_draw_minimap(mlx);
+	if (mlx->map->show_map == 1)
+		ft_draw_minimap(mlx);
 }
