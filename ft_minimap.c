@@ -50,7 +50,7 @@ int			ft_draw_minimap(t_mlx *mlx)
 		init_x++;
 	}
 	init_x = mlx->player->pos_x;
-	init_y = mlx->player->pos_y;
+	init_y = mlx->player->pos_y + 0.5;
 	if (mlx->map->tab[(int)mlx->player->pos_y][(int)mlx->player->pos_x] != 1)
 		ft_draw_square(mlx, init_x, init_y, size, ORANGE);
 	else
