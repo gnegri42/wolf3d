@@ -34,6 +34,12 @@
 # define ORANGE 0x00FFA500
 # define RED 0xFF0000
 
+typedef struct		s_sprite
+{
+	double			x;
+	double			y;
+	int				texture;
+}					t_sprite;
 
 typedef struct		s_color
 {
@@ -121,6 +127,7 @@ typedef struct		s_mlx
 	t_img			*img;
 	t_map			*map;
 	t_player		*player;
+	t_sprite		*sprite;
 }					t_mlx;
 
 int					ft_reader(int argc, char *argv, t_map *map);
