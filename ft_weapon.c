@@ -11,53 +11,64 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
-static void	display_weapon(t_mlx *mlx, int state)
+static void	display_weapon_loop(t_mlx *mlx, int state)
 {
-	int x;
-	int y;
-	int countx;
-	int county;
-	int resize;
-
 	if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
-		resize = 1;
-	else
-		resize = 2;
-	y = WIN_HEIGHT - (256 / resize);
-	county = 0;
-	while (y < WIN_HEIGHT)
 	{
-		countx = 0;
-		x = WIN_WIDTH / 2 - 30;
-		while (x < WIN_WIDTH / 2 + (256 / resize))
-		{
-			if (mlx->map->texture[state].str_img[countx + county * 128] != 0x980088)
-			{
-				ft_fill_pixel(mlx->img, x, y, mlx->map->texture[state].str_img[countx + county * 128]);
-				if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
-				{
-					ft_fill_pixel(mlx->img, x + 1, y, mlx->map->texture[state].str_img[countx + county * 128]);
-					ft_fill_pixel(mlx->img, x, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
-					ft_fill_pixel(mlx->img, x + 1, y + 1, mlx->map->texture[state].str_img[countx + county * 128]);
-				}
-			}
-			if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
-				x += 2;
-			else
-				x++;
-			countx++;
-		}
-		if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
-			y += 2;
-		else
-			y++;
-		county++;
+		ft_fill_pixel(mlx->img, mlx->player->weapon_x,
+			mlx->player->weapon_y, mlx->map->texture[state].
+			str_img[mlx->player->count_x + mlx->player->count_y * 128]);
+		ft_fill_pixel(mlx->img, mlx->player->weapon_x + 1,
+			mlx->player->weapon_y, mlx->map->texture[state].str_img
+			[mlx->player->count_x + mlx->player->count_y * 128]);
+		ft_fill_pixel(mlx->img, mlx->player->weapon_x,
+			mlx->player->weapon_y + 1, mlx->map->texture[state].
+			str_img[mlx->player->count_x +
+				mlx->player->count_y * 128]);
+		ft_fill_pixel(mlx->img, mlx->player->weapon_x + 1,
+			mlx->player->weapon_y + 1, mlx->map->texture[state].
+			str_img[mlx->player->count_x +
+				mlx->player->count_y * 128]);
 	}
 }
 
-void	ft_weapon_handling(t_mlx *mlx)
+static void	display_weapon(t_mlx *mlx, int state)
+{
+	mlx->player->weapon_y = WIN_HEIGHT - (256 / mlx->map->resize);
+	mlx->player->count_y = 0;
+	while (mlx->player->weapon_y < WIN_HEIGHT)
+	{
+		mlx->player->count_x = 0;
+		mlx->player->weapon_x = WIN_WIDTH / 2 - 30;
+		while (mlx->player->weapon_x < WIN_WIDTH / 2 + (256 / mlx->map->resize))
+		{
+			if (mlx->map->texture[state].str_img[mlx->player->count_x +
+				mlx->player->count_y * 128] != 0x980088)
+			{
+				display_weapon_loop(mlx, state);
+			}
+			mlx->player->weapon_x += mlx->player->pas;
+			mlx->player->count_x++;
+		}
+		mlx->player->weapon_y += mlx->player->pas;
+		mlx->player->count_y++;
+	}
+}
+
+static void	display_init_weapon(t_mlx *mlx, int state)
+{
+	int pas;
+
+	pas = 0;
+	if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
+		mlx->player->pas = 2;
+	else
+		mlx->player->pas = 1;
+	display_weapon(mlx, state);
+}
+
+void		ft_weapon_handling(t_mlx *mlx)
 {
 	if (mlx->player->shoot == 1)
 	{
@@ -69,10 +80,10 @@ void	ft_weapon_handling(t_mlx *mlx)
 		mlx->player->weapon = 0;
 		mlx->player->shoot = 0;
 	}
-	if (mlx->map->tex_hit > 1 && mlx->player->ray->texture_num < 7 && mlx->player->weapon == 1)
+	if (mlx->map->tex_hit > 1 && mlx->player->ray->
+		texture_num < 7 && mlx->player->weapon == 1)
 	{
-			mlx->map->tex_change += 1;
-			printf("%d\n", mlx->map->tex_hit);
+		mlx->map->tex_change += 1;
 	}
-	display_weapon(mlx, mlx->player->weapon + 7);
+	display_init_weapon(mlx, mlx->player->weapon + 7);
 }
