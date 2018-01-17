@@ -110,6 +110,7 @@ typedef struct		s_map
 	int 			switch_tex;
 	int 			tex_hit;
 	int 			tex_change;
+	int 			show_map;
 	t_img			*texture;
 }					t_map;
 
