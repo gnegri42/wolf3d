@@ -12,7 +12,7 @@
 
 #include "wolf3d.h"
 
-static void	ft_draw_square(t_mlx *mlx, int init_x, int init_y, int size, int color)
+static void	ft_draw_square(t_mlx *mlx, int init_x, int init_y, int size)
 {
 	int x;
 	int y;
@@ -23,11 +23,22 @@ static void	ft_draw_square(t_mlx *mlx, int init_x, int init_y, int size, int col
 		x = size * 2 + size * init_x;
 		while (x < size * 2 + (size * (init_x + 1)))
 		{
-			ft_fill_pixel(mlx->img, x, y, color);
+			ft_fill_pixel(mlx->img, x, y, mlx->map->color_minimap);
 			x++;
 		}
 		y++;
 	}
+}
+
+static void	ft_draw_minimap2(t_mlx *mlx, int init_x, int init_y, int size)
+{
+	init_x = mlx->player->pos_x;
+	init_y = mlx->player->pos_y;
+	mlx->map->color_minimap = ORANGE;
+	if (mlx->map->tab[(int)mlx->player->pos_y][(int)mlx->player->pos_x] != 1)
+		ft_draw_square(mlx, init_x, init_y, size);
+	else
+		ft_draw_square(mlx, init_x, init_y - 1, size);
 }
 
 int			ft_draw_minimap(t_mlx *mlx)
@@ -44,16 +55,14 @@ int			ft_draw_minimap(t_mlx *mlx)
 		while (init_y < mlx->map->nb_line)
 		{
 			if (mlx->map->tab[init_y][init_x] > 0)
-				ft_draw_square(mlx, init_y, init_x, size, WHITE);
+			{
+				mlx->map->color_minimap = WHITE;
+				ft_draw_square(mlx, init_y, init_x, size);
+			}
 			init_y++;
 		}
 		init_x++;
 	}
-	init_x = mlx->player->pos_x;
-	init_y = mlx->player->pos_y;
-	if (mlx->map->tab[(int)mlx->player->pos_y][(int)mlx->player->pos_x] != 1)
-		ft_draw_square(mlx, init_x, init_y, size, ORANGE);
-	else
-		ft_draw_square(mlx, init_x, init_y - 1, size, ORANGE);
+	ft_draw_minimap2(mlx, init_x, init_y, size);
 	return (0);
 }

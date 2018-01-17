@@ -14,10 +14,10 @@
 
 int		ft_key_release(int keycode, t_mlx *mlx)
 {
-  if (keycode == 257)
-		{
-			mlx->player->move = 0.2;
-			mlx->player->turn = 0.1;
-		}
-    return (0);
+	if (keycode == 257)
+	{
+		mlx->player->move = 0.2;
+		mlx->player->turn = 0.1;
+	}
+	return (0);
 }

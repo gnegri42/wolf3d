@@ -12,6 +12,18 @@
 
 #include "wolf3d.h"
 
+static void	ray_cal_dist_weapon_hit2(t_player *player, t_ray *ray, t_map *map)
+{
+	ray->hit = 1;
+	if (ray->side == 0)
+		ray->wall_dist = (player->map_x - ray->pos_x + (1 - ray->step_x)
+				/ 2) / ray->dir_x;
+	else
+		ray->wall_dist = (player->map_y - ray->pos_y + (1 - ray->step_y)
+				/ 2) / ray->dir_y;
+	map->tex_hit = map->tab[player->map_x][player->map_y];
+}
+
 static void	ray_cal_dist_weapon_hit(t_player *player, t_ray *ray, t_map *map)
 {
 	while (ray->hit == 0)
@@ -30,14 +42,7 @@ static void	ray_cal_dist_weapon_hit(t_player *player, t_ray *ray, t_map *map)
 		}
 		if (map->tab[player->map_x][player->map_y] > 0)
 		{
-			ray->hit = 1;
-			if (ray->side == 0)
-				ray->wall_dist = (player->map_x - ray->pos_x + (1 - ray->step_x)
-						/ 2) / ray->dir_x;
-			else
-				ray->wall_dist = (player->map_y - ray->pos_y + (1 - ray->step_y)
-						/ 2) / ray->dir_y;
-			map->tex_hit = map->tab[player->map_x][player->map_y];
+			ray_cal_dist_weapon_hit2(player, ray, map);
 		}
 	}
 }

@@ -34,7 +34,6 @@
 # define ORANGE 0x00FFA500
 # define RED 0xFF0000
 
-
 typedef struct		s_color
 {
 	int				col_x;
@@ -83,8 +82,13 @@ typedef struct		s_player
 	int				map_y;
 	double			move;
 	double			turn;
-	int 			weapon;
-	int 			shoot;
+	int				weapon;
+	int				shoot;
+	int				pas;
+	int				count_x;
+	int				count_y;
+	int				weapon_x;
+	int				weapon_y;
 	t_ray			*ray;
 }					t_player;
 
@@ -107,10 +111,12 @@ typedef struct		s_map
 	int				line_height;
 	int				pixel_start;
 	int				pixel_last;
-	int 			switch_tex;
-	int 			tex_hit;
-	int 			tex_change;
-	int 			show_map;
+	int				switch_tex;
+	int				resize;
+	int				tex_hit;
+	int				tex_change;
+	int				show_map;
+	int				color_minimap;
 	t_img			*texture;
 }					t_map;
 
@@ -146,5 +152,7 @@ int					ft_mouse_events(int button, int x, int y, t_mlx *mlx);
 int					ft_draw_minimap(t_mlx *mlx);
 int					ft_key_release(int keycode, t_mlx *mlx);
 int					ft_exit_properly(t_mlx *mlx);
+int					ft_draw_floor(t_mlx *mlx, t_ray *ray, int y);
+void				ft_fill_pixel(t_img *img, int x, int y, int color);
 
 #endif

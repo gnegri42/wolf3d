@@ -12,7 +12,7 @@
 
 #include "wolf3d.h"
 
-int	ft_find_position(t_mlx *mlx)
+int			ft_find_position(t_mlx *mlx)
 {
 	int i;
 	int j;
@@ -37,6 +37,17 @@ int	ft_find_position(t_mlx *mlx)
 	return (0);
 }
 
+static void	ft_init_map(t_mlx *mlx)
+{
+	mlx->map->switch_tex = 0;
+	mlx->map->show_map = 0;
+	if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
+		mlx->map->resize = 1;
+	else
+		mlx->map->resize = 2;
+	ft_draw_texture(mlx, mlx->map);
+}
+
 int			ft_init_player(t_mlx *mlx)
 {
 	t_player	*player;
@@ -57,8 +68,6 @@ int			ft_init_player(t_mlx *mlx)
 	player->plane_y = 0.66;
 	mlx->player->weapon = 0;
 	mlx->player->shoot = 0;
-	mlx->map->switch_tex = 0;
-	mlx->map->show_map = 0;
-	ft_draw_texture(mlx, mlx->map);
+	ft_init_map(mlx);
 	return (0);
 }
