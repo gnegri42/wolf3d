@@ -33,7 +33,7 @@ static void	ft_draw_square(t_mlx *mlx, int init_x, int init_y, int size)
 static void	ft_draw_minimap2(t_mlx *mlx, int init_x, int init_y, int size)
 {
 	init_x = mlx->player->pos_x;
-	init_y = mlx->player->pos_y;
+	init_y = mlx->player->pos_y + 0.5;
 	mlx->map->color_minimap = ORANGE;
 	if (mlx->map->tab[(int)mlx->player->pos_y][(int)mlx->player->pos_x] != 1)
 		ft_draw_square(mlx, init_x, init_y, size);
