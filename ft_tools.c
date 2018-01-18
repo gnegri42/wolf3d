@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sky_and_floor.c                                 :+:      :+:    :+:   */
+/*   ft_tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmuselet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/17 11:45:24 by bmuselet          #+#    #+#             */
-/*   Updated: 2018/01/17 11:45:26 by bmuselet         ###   ########.fr       */
+/*   Created: 2018/01/18 18:57:43 by bmuselet          #+#    #+#             */
+/*   Updated: 2018/01/18 18:57:45 by bmuselet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,44 @@ int 	ft_draw_floor(t_mlx *mlx, t_ray *ray, int y)
 }
 */
 
-int		ft_big_int_error(t_mlx *mlx)
+static int	ft_expose_commands_bis(t_mlx *mlx)
+{
+	mlx_string_put(mlx->mlx, mlx->win, 35, 35, WHITE, "Quit = ESC");
+	mlx_string_put(mlx->mlx, mlx->win, 35, 55, WHITE,
+		"Move = ^ v < > or W S A D");
+	mlx_string_put(mlx->mlx, mlx->win, 35, 75,
+		WHITE, "Show/Hide textures and sky = T");
+	mlx_string_put(mlx->mlx, mlx->win, 35, 95, WHITE, "Show/Hide minimap = M");
+	mlx_string_put(mlx->mlx, mlx->win, 35, 115, WHITE,
+		"Show/Hide commands = H");
+	mlx_string_put(mlx->mlx, mlx->win, 35, 135, WHITE,
+		"Reset position = Backspace");
+	mlx_string_put(mlx->mlx, mlx->win, 35, 155,
+		WHITE, "Shoot = Left click");
+	mlx_string_put(mlx->mlx, mlx->win, 35, 175, WHITE, "Sprint = Hold SHIFT");
+	return (0);
+}
+
+int			ft_expose_commands(t_mlx *mlx)
+{
+	int	x;
+	int	y;
+
+	x = 27;
+	y = 34;
+	while (x <= 360)
+		mlx_pixel_put(mlx->mlx, mlx->win, x++, y, WHITE);
+	while (y <= 200)
+		mlx_pixel_put(mlx->mlx, mlx->win, x, y++, WHITE);
+	while (x >= 27)
+		mlx_pixel_put(mlx->mlx, mlx->win, x--, y, WHITE);
+	while (y >= 34)
+		mlx_pixel_put(mlx->mlx, mlx->win, x, y--, WHITE);
+	ft_expose_commands_bis(mlx);
+	return (0);
+}
+
+int			ft_big_int_error(t_mlx *mlx)
 {
 	int		i;
 	int		j;
@@ -102,7 +139,7 @@ int		ft_big_int_error(t_mlx *mlx)
 	return (0);
 }
 
-void	ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
+void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
 {
 	ray->texture_num = map->tab[player->map_x][player->map_y] - 1;
 	if (ray->side == 0)
@@ -116,7 +153,7 @@ void	ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
 	ray->texture_coord = abs(ray->texture_coord);
 }
 
-void	ft_draw_sky(t_mlx *mlx)
+void		ft_draw_sky(t_mlx *mlx)
 {
 	int	x;
 	int	y;

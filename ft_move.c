@@ -20,8 +20,7 @@ static void	ft_move_up(t_mlx *mlx)
 	if (mlx->map->tab[(int)mlx->player->pos_x][(int)(mlx->player->pos_y +
 		mlx->player->dir_y * mlx->player->move)] == 0)
 		mlx->player->pos_y += mlx->player->dir_y * mlx->player->move;
-	ft_calc(mlx, mlx->player);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	ft_expose_hook(mlx);
 }
 
 static void	ft_move_down(t_mlx *mlx)
@@ -32,8 +31,7 @@ static void	ft_move_down(t_mlx *mlx)
 	if (mlx->map->tab[(int)mlx->player->pos_x][(int)(mlx->player->pos_y
 		- mlx->player->dir_y * mlx->player->move)] == 0)
 		mlx->player->pos_y -= mlx->player->dir_y * mlx->player->move;
-	ft_calc(mlx, mlx->player);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	ft_expose_hook(mlx);
 }
 
 static void	ft_rotate_right(t_mlx *mlx)
@@ -51,8 +49,7 @@ static void	ft_rotate_right(t_mlx *mlx)
 	- mlx->player->plane_y * sin(mlx->player->turn);
 	mlx->player->plane_y = old_plane_x * sin(mlx->player->turn) +
 	mlx->player->plane_y * cos(mlx->player->turn);
-	ft_calc(mlx, mlx->player);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	ft_expose_hook(mlx);
 }
 
 static void	ft_rotate_left(t_mlx *mlx)
@@ -70,8 +67,7 @@ static void	ft_rotate_left(t_mlx *mlx)
 	mlx->player->plane_y * sin(-mlx->player->turn);
 	mlx->player->plane_y = old_plane_x * sin(-mlx->player->turn) +
 	mlx->player->plane_y * cos(-mlx->player->turn);
-	ft_calc(mlx, mlx->player);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	ft_expose_hook(mlx);
 }
 
 int			ft_move_events(int keycode, t_mlx *mlx)

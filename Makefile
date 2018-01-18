@@ -29,7 +29,7 @@ SRCS = 			main.c\
 				ft_keycode2.c\
 				ft_exit_properly.c\
 				ft_calc_weapon_hit.c\
-				ft_sky_and_floor.c\
+				ft_tools.c\
 				ft_fill_pixel.c\
 				ft_dmg_walls.c\
 

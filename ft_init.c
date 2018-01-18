@@ -39,8 +39,9 @@ int			ft_find_position(t_mlx *mlx)
 
 static void	ft_init_map(t_mlx *mlx)
 {
-	mlx->map->switch_tex = 0;
+	mlx->map->switch_tex = 1;
 	mlx->map->show_map = 0;
+	mlx->map->show_help = 1;
 	if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
 		mlx->map->resize = 1;
 	else

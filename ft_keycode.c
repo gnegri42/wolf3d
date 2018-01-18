@@ -16,22 +16,31 @@ int			ft_expose_hook(t_mlx *mlx)
 {
 	ft_calc(mlx, mlx->player);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	if (mlx->map->show_help == 1)
+	{
+			mlx->map->show_map = 0;
+			ft_expose_commands(mlx);
+	}
 	return (0);
 }
 
-static int	ft_switch_tex(t_mlx *mlx)
+static int	ft_switch_tex_or_help(int keycode, t_mlx *mlx)
 {
-	if (mlx->map->switch_tex == 0)
-	{
+	if (mlx->map->switch_tex == 0 && keycode == 17)
 		mlx->map->switch_tex = 1;
-		ft_calc(mlx, mlx->player);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
-		return (0);
-	}
 	else
-		mlx->map->switch_tex = 0;
-	ft_calc(mlx, mlx->player);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+	{
+		if (keycode == 17)
+			mlx->map->switch_tex = 0;
+	}
+	if (mlx->map->show_help == 0 && keycode == 4)
+		mlx->map->show_help = 1;
+	else
+	{
+		if (keycode == 4)
+			mlx->map->show_help = 0;
+	}
+	ft_expose_hook(mlx);
 	return (0);
 }
 
@@ -44,15 +53,20 @@ static void	ft_reset_and_map(int keycode, t_mlx *mlx)
 		mlx->player->dir_y = 0;
 		mlx->player->plane_x = 0;
 		mlx->player->plane_y = 0.66;
-		ft_calc(mlx, mlx->player);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
+		ft_expose_hook(mlx);
 	}
 	if (keycode == 46)
 	{
 		if (mlx->map->show_map == 0)
+		{
+			if (mlx->map->show_help == 1)
+				mlx->map->show_help = 0;
 			mlx->map->show_map = 1;
+			ft_expose_hook(mlx);
+		}
 		else
 			mlx->map->show_map = 0;
+		ft_expose_hook(mlx);
 	}
 }
 
@@ -74,8 +88,8 @@ int			ft_key_events(int keycode, t_mlx *mlx)
 		keycode == 1 || keycode == 124 || keycode == 2 ||
 		keycode == 123 || keycode == 0)
 		ft_move_events(keycode, mlx);
-	if (keycode == 17)
-		ft_switch_tex(mlx);
+	if (keycode == 17 || keycode == 4)
+		ft_switch_tex_or_help(keycode, mlx);
 	if (keycode == 51 || keycode == 46)
 		ft_reset_and_map(keycode, mlx);
 	if (keycode == 257)

@@ -34,12 +34,12 @@
 # define ORANGE 0x00FFA500
 # define RED 0xFF0000
 
-typedef struct		s_sprite
+typedef struct		s_sprite				// A ENLEVER
 {
 	double			x;
 	double			y;
 	int				texture;
-}					t_sprite;
+}					t_sprite;				// A ENLEVER
 
 typedef struct		s_color
 {
@@ -124,6 +124,7 @@ typedef struct		s_map
 	int				tex_change;
 	int				show_map;
 	int				color_minimap;
+	int				show_help;
 	t_img			*texture;
 }					t_map;
 
@@ -160,10 +161,11 @@ int					ft_mouse_events(int button, int x, int y, t_mlx *mlx);
 int					ft_draw_minimap(t_mlx *mlx);
 int					ft_key_release(int keycode, t_mlx *mlx);
 int					ft_exit_properly(t_mlx *mlx);
-int					ft_draw_floor(t_mlx *mlx, t_ray *ray, int y);
+int					ft_draw_floor(t_mlx *mlx, t_ray *ray, int y);					// A ENLEVER
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
 int					ft_init_dmg_walls(t_mlx *mlx);
 int					ft_dmg_walls(t_mlx *mlx);
 int					ft_big_int_error(t_mlx *mlx);
+int					ft_expose_commands(t_mlx *mlx);
 
 #endif

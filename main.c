@@ -90,6 +90,7 @@ static void	ft_loop_img(t_mlx *mlx, t_img *img)
 		&(img->bpp), &(img->s_l), &(img->endian));
 	ft_calc(mlx, mlx->player);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
+	ft_expose_hook(mlx);
 	mlx_hook(mlx->win, 2, 1L << 0, ft_key_events, mlx);
 	mlx_hook(mlx->win, 3, 1L << 1, ft_key_release, mlx);
 	mlx_hook(mlx->win, 4, 1L << 12, ft_mouse_events, mlx);
