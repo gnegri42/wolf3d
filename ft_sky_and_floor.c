@@ -77,6 +77,30 @@ int 	ft_draw_floor(t_mlx *mlx, t_ray *ray, int y)
 	return (color);
 }
 */
+
+int	ft_space_error(t_mlx *mlx)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < mlx->map->nb_line)
+	{
+		j = 0;
+		while (j < mlx->map->nb_int)
+		{
+			if (mlx->map->tab[i][j] > 49)
+			{
+				ft_putstr("The value of a number is too big. Limit set to 50.\n");
+				return (-1);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
 {
 	ray->texture_num = map->tab[player->map_x][player->map_y] - 1;
