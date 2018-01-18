@@ -98,4 +98,5 @@ void		ft_calc_weapon_hit(t_mlx *mlx, t_player *player)
 	ray_init_weapon_hit(player, mlx->player->ray, x);
 	ray_cal_step_side_weapon_hit(mlx->player->ray);
 	ray_cal_dist_weapon_hit(player, mlx->player->ray, mlx->map);
+	ft_dmg_walls(mlx);												// A ENLEVER SI CA MARCHE PAS
 }

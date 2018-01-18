@@ -12,22 +12,24 @@
 
 #include "wolf3d.h"
 
-static int			ft_text(t_mlx *mlx, int x, int y)
+static int			ft_text(t_mlx *mlx, int y)
 {
 	int d;
-	int j;
 	int tex_y;
 	int color;
 
 	d = y * 256 - WIN_HEIGHT * 128 + mlx->map->line_height * 128;
 	tex_y = ((d * TEXTURE_HEIGHT) / mlx->map->line_height) / 256;
-	j = x + y * WIN_WIDTH;
 	color = mlx->map->texture[mlx->player->ray->texture_num].
+		str_img[tex_y * 64 + mlx->player->ray->texture_coord % 64];
+	if (mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] > 0 && mlx->map->texture[11 + mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y]].		///// A ENLEVER	
+		str_img[tex_y * 64 + mlx->player->ray->texture_coord % 64] != WHITE)
+		color = mlx->map->texture[11 + mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y]].	
 		str_img[tex_y * 64 + mlx->player->ray->texture_coord % 64];
 	return (color);
 }
 
-static unsigned int	ft_get_color2(t_mlx *mlx, int x, int y)
+static unsigned int	ft_get_color2(t_mlx *mlx, int y)
 {
 	int color;
 
@@ -38,7 +40,7 @@ static unsigned int	ft_get_color2(t_mlx *mlx, int x, int y)
 			->step_x == 1 && mlx->player->ray->step_y == -1))
 		{
 			mlx->player->ray->texture_num = 0;
-			color = ft_text(mlx, x, y);
+			color = ft_text(mlx, y);
 			return (color);
 		}
 		if ((mlx->player->ray->step_x == -1 && mlx->player->ray->step_y == 1) ||
@@ -46,18 +48,18 @@ static unsigned int	ft_get_color2(t_mlx *mlx, int x, int y)
 					&& mlx->player->ray->step_y == 1))
 		{
 			mlx->player->ray->texture_num = 1;
-			color = ft_text(mlx, x, y);
+			color = ft_text(mlx, y);
 			return (color);
 		}
 	}
 	return (0);
 }
 
-static unsigned int	ft_get_color(t_mlx *mlx, int x, int y)
+static unsigned int	ft_get_color(t_mlx *mlx, int y)
 {
 	int color;
 
-	if (ft_get_color2(mlx, x, y) == 0)
+	if (ft_get_color2(mlx, y) == 0)
 	{
 		if ((mlx->player->ray->step_x == -1 &&
 			mlx->player->ray->step_y == -1) ||
@@ -65,15 +67,15 @@ static unsigned int	ft_get_color(t_mlx *mlx, int x, int y)
 					mlx->player->ray->step_y == 1))
 		{
 			mlx->player->ray->texture_num = 2;
-			color = ft_text(mlx, x, y);
+			color = ft_text(mlx, y);
 			return (color);
 		}
 		mlx->player->ray->texture_num = 3;
-		color = ft_text(mlx, x, y);
+		color = ft_text(mlx, y);
 		return (color);
 	}
 	else
-		return (ft_get_color2(mlx, x, y));
+		return (ft_get_color2(mlx, y));
 }
 
 static void			ft_draw_col2(t_mlx *mlx, int x, int i)
@@ -111,7 +113,7 @@ void				ft_draw_col(t_mlx *mlx, int x)
 		if (mlx->map->switch_tex == 1)
 			color = ft_get_initial_color(mlx);
 		else
-			color = ft_get_color(mlx, x, i);
+			color = ft_get_color(mlx, i);
 		ft_fill_pixel(mlx->img, x, i, color);
 		i++;
 	}

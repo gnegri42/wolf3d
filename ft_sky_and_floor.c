@@ -77,6 +77,19 @@ int 	ft_draw_floor(t_mlx *mlx, t_ray *ray, int y)
 	return (color);
 }
 */
+void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
+{
+	ray->texture_num = map->tab[player->map_x][player->map_y] - 1;
+	if (ray->side == 0)
+		ray->wall_hit = ray->pos_y + ray->wall_dist * ray->dir_y;
+	else
+		ray->wall_hit = ray->pos_x + ray->wall_dist * ray->dir_x;
+	ray->texture_coord = (int)(ray->wall_hit * (double)(TEXTURE_WIDTH));
+	if ((ray->side == 0 && ray->dir_x > 0) ||
+		(ray->side == 1 && ray->dir_y < 0))
+		ray->texture_coord = TEXTURE_WIDTH - ray->texture_coord - 1;
+	ray->texture_coord = abs(ray->texture_coord);
+}
 
 void	ft_draw_sky(t_mlx *mlx)
 {

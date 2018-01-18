@@ -133,6 +133,7 @@ typedef struct		s_mlx
 	void			*win;
 	t_img			*img;
 	t_map			*map;
+	t_map			*destroyed_map;
 	t_player		*player;
 	t_sprite		*sprite;
 }					t_mlx;
@@ -162,5 +163,7 @@ int					ft_key_release(int keycode, t_mlx *mlx);
 int					ft_exit_properly(t_mlx *mlx);
 int					ft_draw_floor(t_mlx *mlx, t_ray *ray, int y);
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
+int					ft_init_dmg_walls(t_mlx *mlx);
+int					ft_dmg_walls(t_mlx *mlx);
 
 #endif

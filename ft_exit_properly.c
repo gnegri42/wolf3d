@@ -17,7 +17,7 @@ static void	ft_wolf_free_image(t_mlx *mlx)
 	int x;
 
 	x = 0;
-	while (x < 11)
+	while (x < 21)
 	{
 		mlx_destroy_image(mlx->mlx, mlx->map->texture[x].img);
 		x++;
@@ -34,6 +34,10 @@ static void	ft_wolf_free_map(t_mlx *mlx)
 	while (x < mlx->map->nb_line)
 		free(mlx->map->tab[x++]);
 	free(mlx->map->tab);
+	x = 0;
+	while (x < mlx->map->nb_line)
+		free(mlx->destroyed_map->tab[x++]);
+	free(mlx->destroyed_map->tab);
 	x = 0;
 	while (x < mlx->map->nb_line)
 		free(mlx->map->content[x++]);

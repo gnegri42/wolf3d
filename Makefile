@@ -31,6 +31,7 @@ SRCS = 			main.c\
 				ft_calc_weapon_hit.c\
 				ft_sky_and_floor.c\
 				ft_fill_pixel.c\
+				ft_dmg_walls.c\
 
 OBJS = 			$(SRCS:.c=.o)
 

@@ -12,18 +12,52 @@
 
 #include "wolf3d.h"
 
-void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
+static void	ft_draw_texture_crackel_2(t_mlx *mlx, t_map *map, int a, int b)
 {
-	ray->texture_num = map->tab[player->map_x][player->map_y] - 1;
-	if (ray->side == 0)
-		ray->wall_hit = ray->pos_y + ray->wall_dist * ray->dir_y;
-	else
-		ray->wall_hit = ray->pos_x + ray->wall_dist * ray->dir_x;
-	ray->texture_coord = (int)(ray->wall_hit * (double)(TEXTURE_WIDTH));
-	if ((ray->side == 0 && ray->dir_x > 0) ||
-		(ray->side == 1 && ray->dir_y < 0))
-		ray->texture_coord = TEXTURE_WIDTH - ray->texture_coord - 1;
-	ray->texture_coord = abs(ray->texture_coord);
+	map->texture[18].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_6.xpm", &a, &b);
+	map->texture[18].str_img = (int *)mlx_get_data_addr(map->texture[18].img,
+		&map->texture[18].bpp, &map->texture[18].s_l, &map->texture[18].endian);
+	map->texture[19].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_7.xpm", &a, &b);
+	map->texture[19].str_img = (int *)mlx_get_data_addr(map->texture[19].img,
+		&map->texture[19].bpp, &map->texture[19].s_l, &map->texture[19].endian);
+	map->texture[20].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_8.xpm", &a, &b);
+	map->texture[20].str_img = (int *)mlx_get_data_addr(map->texture[20].img,
+		&map->texture[20].bpp, &map->texture[20].s_l, &map->texture[20].endian);
+	map->texture[21].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_9.xpm", &a, &b);
+	map->texture[21].str_img = (int *)mlx_get_data_addr(map->texture[21].img,
+		&map->texture[21].bpp, &map->texture[21].s_l, &map->texture[21].endian);
+}
+
+static void	ft_draw_texture_crackel(t_mlx *mlx, t_map *map, int a, int b)
+{
+	map->texture[12].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_0.xpm", &a, &b);
+	map->texture[12].str_img = (int *)mlx_get_data_addr(map->texture[12].img,
+		&map->texture[12].bpp, &map->texture[12].s_l, &map->texture[12].endian);
+	map->texture[13].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_1.xpm", &a, &b);
+	map->texture[13].str_img = (int *)mlx_get_data_addr(map->texture[13].img,
+		&map->texture[13].bpp, &map->texture[13].s_l, &map->texture[13].endian);
+	map->texture[14].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_2.xpm", &a, &b);
+	map->texture[14].str_img = (int *)mlx_get_data_addr(map->texture[14].img,
+		&map->texture[14].bpp, &map->texture[14].s_l, &map->texture[14].endian);
+	map->texture[15].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_3.xpm", &a, &b);
+	map->texture[15].str_img = (int *)mlx_get_data_addr(map->texture[15].img,
+		&map->texture[15].bpp, &map->texture[15].s_l, &map->texture[15].endian);
+	map->texture[16].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_4.xpm", &a, &b);
+	map->texture[16].str_img = (int *)mlx_get_data_addr(map->texture[16].img,
+		&map->texture[16].bpp, &map->texture[16].s_l, &map->texture[16].endian);
+	map->texture[17].img = mlx_xpm_file_to_image(mlx->mlx,
+		"textures/destroy_stage_5.xpm", &a, &b);
+	map->texture[17].str_img = (int *)mlx_get_data_addr(map->texture[17].img,
+		&map->texture[17].bpp, &map->texture[17].s_l, &map->texture[17].endian);
 }
 
 static void	ft_draw_texture_pistol(t_mlx *mlx, t_map *map, int a, int b)
@@ -75,7 +109,7 @@ void		ft_draw_texture(t_mlx *mlx, t_map *map)
 	int a;
 	int	b;
 
-	map->texture = malloc(sizeof(t_img) * 12);
+	map->texture = malloc(sizeof(t_img) * 22);
 	a = 64;
 	b = 64;
 	map->texture[0].img = mlx_xpm_file_to_image(mlx->mlx,
@@ -96,4 +130,6 @@ void		ft_draw_texture(t_mlx *mlx, t_map *map)
 		&map->texture[3].bpp, &map->texture[3].s_l, &map->texture[3].endian);
 	ft_draw_texture2(mlx, map, a, b);
 	ft_draw_texture_pistol(mlx, map, a, b);
+	ft_draw_texture_crackel(mlx, map, a, b);
+	ft_draw_texture_crackel_2(mlx, map, a, b);
 }

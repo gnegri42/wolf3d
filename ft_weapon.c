@@ -80,10 +80,5 @@ void		ft_weapon_handling(t_mlx *mlx)
 		mlx->player->weapon = 0;
 		mlx->player->shoot = 0;
 	}
-	if (mlx->map->tex_hit > 1 && mlx->player->ray->
-		texture_num < 7 && mlx->player->weapon == 1)
-	{
-		mlx->map->tex_change += 1;
-	}
 	display_init_weapon(mlx, mlx->player->weapon + 7);
 }
