@@ -115,8 +115,10 @@ int			main(int argc, char **argv)
 	if (ft_reader(argc, argv[1], map) != 0)
 		return (-1);
 	map->tab = ft_new_tab(map->str, map->nb_line, map->nb_int);
-	ft_init_dmg_walls(mlx);                                              ////////// C EST ICI DMG WALLS
+	ft_init_dmg_walls(mlx);
 	ft_enclosed(mlx);
+	if (ft_space_error(mlx) == -1)
+		return (-1);
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIN_WIDTH, WIN_HEIGHT, "Wolf3d 42");
 	if (ft_init_player(mlx) == -1)

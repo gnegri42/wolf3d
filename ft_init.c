@@ -27,8 +27,8 @@ int			ft_find_position(t_mlx *mlx)
 				j++;
 			else
 			{
-				mlx->player->pos_x = j + 0.5;
-				mlx->player->pos_y = i + 0.5;
+				mlx->player->pos_x = i + 0.5;
+				mlx->player->pos_y = j + 0.5;
 				return (0);
 			}
 		}
@@ -59,7 +59,6 @@ int			ft_init_player(t_mlx *mlx)
 		return (-1);
 	mlx->player = player;
 	player->ray = ray;
-	ft_find_position(mlx);
 	player->dir_x = 1;
 	player->dir_y = 0;
 	player->move = 0.2;
@@ -68,6 +67,7 @@ int			ft_init_player(t_mlx *mlx)
 	player->plane_y = 0.66;
 	mlx->player->weapon = 0;
 	mlx->player->shoot = 0;
+	ft_find_position(mlx);
 	ft_init_map(mlx);
 	return (0);
 }

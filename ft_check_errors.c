@@ -25,13 +25,13 @@ static int	ft_number_error(char *str)
 				i++;
 			if ((str[i] > '0' && str[i] < '9') && str[i + 1] != ' ')
 			{
-				ft_putstr("wrong number value : ");
+				ft_putstr("Wrong number value\n");
 				return (-1);
 			}
 		}
 		else if (str[i + 1] == ' ' && (str[i + 1] < '0' && str[i + 1] > '9'))
 		{
-			ft_putstr("wrong number value : ");
+			ft_putstr("Wrong number value\n");
 			return (-1);
 		}
 		i++;
@@ -48,7 +48,7 @@ static int	ft_start_error(char *str)
 	{
 		if ((str[i] < '0' || str[i] > '9') && str[i] != ' ')
 		{
-			ft_putstr("error: lines must start by a digit or a space\n");
+			ft_putstr("Error: lines must start by a digit or a space\n");
 			return (-1);
 		}
 		while (str[i] != '\n' && str[i] != '\0')
@@ -68,7 +68,7 @@ static int	ft_invalid(char *str, int i)
 		if (str[i] != ' ' && str[i] != '\n'\
 				&& !(str[i] >= '0' && str[i] <= '9'))
 		{
-			ft_putstr("error: bad character in file\n");
+			ft_putstr("Error: bad character in file\n");
 			return (-1);
 		}
 		if (str[i] == '0')
@@ -77,7 +77,7 @@ static int	ft_invalid(char *str, int i)
 	}
 	if (count == 0)
 	{
-		ft_putstr("error: no place to stand in the map\n");
+		ft_putstr("Error: no place to stand in the map\n");
 		return (-1);
 	}
 	return (0);
@@ -90,7 +90,7 @@ int			ft_check_errors(char *str)
 	i = 0;
 	if (str[0] == '\0')
 	{
-		ft_putstr("error: file is empty\n");
+		ft_putstr("Error: file is empty\n");
 		return (-1);
 	}
 	while (str[i] != '\0')
