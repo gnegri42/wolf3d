@@ -61,27 +61,27 @@ static int	**ft_null_tab(t_mlx *mlx, char *str, int nb_line, int nb_int)
 	return (tab);
 }
 
-int		ft_dmg_walls(t_mlx *mlx)
+int			ft_dmg_walls(t_mlx *mlx)
 {
 	int x;
 
 	x = 0;
-	mlx->destroyed_map->tex_hit = mlx->map->tab[mlx->player->map_x][mlx->player->map_y];
-	if (mlx->destroyed_map->tex_hit > 0 && mlx->player->weapon == 1 
+	mlx->destroyed_map->tex_hit = mlx->map->
+	tab[mlx->player->map_x][mlx->player->map_y];
+	if (mlx->destroyed_map->tex_hit > 0 && mlx->player->weapon == 1
 		&& mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] < 9)
-	{
-			mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] += 1;
-	}
+		mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] += 1;
 	return (0);
 }
 
-int		ft_init_dmg_walls(t_mlx *mlx)
+int			ft_init_dmg_walls(t_mlx *mlx)
 {
 	t_map	*destroyed_map;
-	
+
 	if (!(destroyed_map = (t_map *)malloc(sizeof(t_map))))
 		return (-1);
 	mlx->destroyed_map = destroyed_map;
-	destroyed_map->tab = ft_null_tab(mlx, mlx->map->str, mlx->map->nb_line, mlx->map->nb_int);
+	destroyed_map->tab = ft_null_tab(mlx, mlx->map->str,
+		mlx->map->nb_line, mlx->map->nb_int);
 	return (0);
 }
