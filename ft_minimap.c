@@ -17,11 +17,11 @@ static void	ft_draw_square(t_mlx *mlx, int init_x, int init_y, int size)
 	int x;
 	int y;
 
-	y = size * 2 + size * init_y;
-	while (y < size * 2 + (size * (init_y + 1)))
+	y = size * init_y;
+	while (y < (size * (init_y + 1)))
 	{
-		x = size * 2 + size * init_x;
-		while (x < size * 2 + (size * (init_x + 1)))
+		x = size * init_x;
+		while (x < (size * (init_x + 1)))
 		{
 			ft_fill_pixel(mlx->img, x, y, mlx->map->color_minimap);
 			x++;
@@ -33,12 +33,10 @@ static void	ft_draw_square(t_mlx *mlx, int init_x, int init_y, int size)
 static void	ft_draw_minimap2(t_mlx *mlx, int init_x, int init_y, int size)
 {
 	init_x = mlx->player->pos_x;
-	init_y = mlx->player->pos_y + 0.5;
+	init_y = mlx->player->pos_y;
 	mlx->map->color_minimap = ORANGE;
-	if (mlx->map->tab[(int)mlx->player->pos_y][(int)mlx->player->pos_x] != 1)
-		ft_draw_square(mlx, init_x, init_y, size);
-	else
-		ft_draw_square(mlx, init_x, init_y - 1, size);
+	if (init_x < 20 && init_y < 20)
+			ft_draw_square(mlx, init_x, init_y, size);
 }
 
 int			ft_draw_minimap(t_mlx *mlx)
@@ -47,12 +45,12 @@ int			ft_draw_minimap(t_mlx *mlx)
 	int		init_y;
 	int		size;
 
-	size = WIN_WIDTH / 10 / mlx->map->nb_int;
+	size = WIN_WIDTH / 5 / mlx->map->nb_int;
 	init_x = 0;
-	while (init_x < mlx->map->nb_int)
+	while (init_x < mlx->map->nb_int && init_x < 20)
 	{
 		init_y = 0;
-		while (init_y < mlx->map->nb_line)
+		while (init_y < mlx->map->nb_line && init_y < 20)
 		{
 			if (mlx->map->tab[init_y][init_x] > 0)
 			{
