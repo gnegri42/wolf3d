@@ -78,7 +78,7 @@ int 	ft_draw_floor(t_mlx *mlx, t_ray *ray, int y)
 }
 */
 
-int		ft_space_error(t_mlx *mlx)
+int		ft_big_int_error(t_mlx *mlx)
 {
 	int		i;
 	int		j;

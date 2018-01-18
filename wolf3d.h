@@ -164,6 +164,6 @@ int					ft_draw_floor(t_mlx *mlx, t_ray *ray, int y);
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
 int					ft_init_dmg_walls(t_mlx *mlx);
 int					ft_dmg_walls(t_mlx *mlx);
-int					ft_space_error(t_mlx *mlx);
+int					ft_big_int_error(t_mlx *mlx);
 
 #endif

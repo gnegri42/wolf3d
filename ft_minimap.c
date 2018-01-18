@@ -36,7 +36,7 @@ static void	ft_draw_minimap2(t_mlx *mlx, int init_x, int init_y, int size)
 	init_y = mlx->player->pos_y;
 	mlx->map->color_minimap = ORANGE;
 	if (init_x < 20 && init_y < 20)
-			ft_draw_square(mlx, init_x, init_y, size);
+		ft_draw_square(mlx, init_x, init_y, size);
 }
 
 int			ft_draw_minimap(t_mlx *mlx)

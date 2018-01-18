@@ -55,7 +55,7 @@ static int	ft_verifs(int fd, t_map *map, char *line)
 {
 	if (get_next_line(fd, &line) < 0)
 	{
-		ft_putstr("error : unable to read any content\n");
+		ft_putstr("Error : unable to read any content.\n");
 		free(map->str);
 		free(map->content);
 		return (-1);
@@ -68,7 +68,7 @@ static int	ft_verifs(int fd, t_map *map, char *line)
 	}
 	if (ft_verif_int_nb(map) != 0)
 	{
-		ft_putstr("error : wrong line length\n");
+		ft_putstr("Error : wrong line length.\n");
 		free(map->content);
 		free(map->str);
 		return (-1);
@@ -80,12 +80,12 @@ static int	ft_check_read(int argc, char *argv, int *fd)
 {
 	if (argc != 2)
 	{
-		ft_putstr("usage: ./wolf3d input_file\n");
+		ft_putstr("Usage: ./wolf3d input_file\n");
 		return (-1);
 	}
 	if ((*fd = open(argv, O_RDONLY)) < 0)
 	{
-		ft_putstr("error : bad_file\n");
+		ft_putstr("Error : bad_file.\n");
 		close(*fd);
 		return (-1);
 	}

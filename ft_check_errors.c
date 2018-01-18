@@ -12,6 +12,27 @@
 
 #include "wolf3d.h"
 
+static int	ft_check_space(char *str)
+{
+	int		i;
+	int		space;
+
+	i = 0;
+	space = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ' ')
+			space = 1;
+		i++;
+	}
+	if (space == 0)
+	{
+		ft_putstr("The map can't be composed of just one row of int.\n");
+		return (-1);
+	}
+	return (0);
+}
+
 static int	ft_number_error(char *str)
 {
 	int		i;
@@ -25,13 +46,13 @@ static int	ft_number_error(char *str)
 				i++;
 			if ((str[i] > '0' && str[i] < '9') && str[i + 1] != ' ')
 			{
-				ft_putstr("Wrong number value\n");
+				ft_putstr("Wrong number value.\n");
 				return (-1);
 			}
 		}
 		else if (str[i + 1] == ' ' && (str[i + 1] < '0' && str[i + 1] > '9'))
 		{
-			ft_putstr("Wrong number value\n");
+			ft_putstr("Wrong number value.\n");
 			return (-1);
 		}
 		i++;
@@ -48,7 +69,7 @@ static int	ft_start_error(char *str)
 	{
 		if ((str[i] < '0' || str[i] > '9') && str[i] != ' ')
 		{
-			ft_putstr("Error: lines must start by a digit or a space\n");
+			ft_putstr("Error: lines must start by a digit or a space.\n");
 			return (-1);
 		}
 		while (str[i] != '\n' && str[i] != '\0')
@@ -96,7 +117,7 @@ int			ft_check_errors(char *str)
 	while (str[i] != '\0')
 		i++;
 	if (ft_start_error(str) == -1 || ft_invalid(str, 0) == -1
-		|| ft_number_error(str) == -1)
+		|| ft_number_error(str) == -1 || ft_check_space(str) == -1)
 		return (-1);
 	return (0);
 }
