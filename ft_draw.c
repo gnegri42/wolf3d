@@ -22,10 +22,14 @@ static int			ft_text(t_mlx *mlx, int y)
 	tex_y = ((d * TEXTURE_HEIGHT) / mlx->map->line_height) / 256;
 	color = mlx->map->texture[mlx->player->ray->texture_num].
 		str_img[tex_y * 64 + mlx->player->ray->texture_coord % 64];
-	if (mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] > 0 && mlx->map->texture[11 + mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y]].		///// A ENLEVER	
+	if (mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] > 0
+	&& mlx->map->texture[11 + mlx->destroyed_map->
+	tab[mlx->player->map_x][mlx->player->map_y]].
 		str_img[tex_y * 64 + mlx->player->ray->texture_coord % 64] != WHITE)
-		color = mlx->map->texture[11 + mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y]].	
-		str_img[tex_y * 64 + mlx->player->ray->texture_coord % 64];
+		color = mlx->map->
+	texture[11 + mlx->destroyed_map->tab[mlx->player->map_x]
+			[mlx->player->map_y]].str_img
+	[tex_y * 64 + mlx->player->ray->texture_coord % 64];
 	return (color);
 }
 

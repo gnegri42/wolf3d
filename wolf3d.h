@@ -153,7 +153,6 @@ void				ft_draw_texture(t_mlx *mlx, t_map *map);
 void				ft_draw_sky(t_mlx *mlx);
 int					ft_get_initial_color(t_mlx *mlx);
 int					ft_find_position(t_mlx *mlx);
-//void				ft_calc_floor(t_mlx *mlx, t_ray *ray);
 void				ft_weapon_handling(t_mlx *mlx);
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
 int					ft_expose_hook(t_mlx *mlx);
@@ -165,5 +164,6 @@ int					ft_draw_floor(t_mlx *mlx, t_ray *ray, int y);
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
 int					ft_init_dmg_walls(t_mlx *mlx);
 int					ft_dmg_walls(t_mlx *mlx);
+int					ft_space_error(t_mlx *mlx);
 
 #endif

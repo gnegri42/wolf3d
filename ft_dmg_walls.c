@@ -13,6 +13,25 @@
 #include "wolf3d.h"
 #include <stdio.h>
 
+static int	**ft_null_tab_bis(t_mlx *mlx, int **tab)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	while (i < mlx->map->nb_line)
+	{
+		j = 0;
+		while (j < mlx->map->nb_int)
+		{
+			tab[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+	return (tab);
+}
+
 static int	**ft_null_tab(t_mlx *mlx, char *str, int nb_line, int nb_int)
 {
 	int		i;
@@ -38,21 +57,11 @@ static int	**ft_null_tab(t_mlx *mlx, char *str, int nb_line, int nb_int)
 		k++;
 		j++;
 	}
-	i = 0;
-	while (i < mlx->map->nb_line)
-	{
-		j = 0;
-		while (j < mlx->map->nb_int)
-		{
-			tab[i][j] = 0;
-			j++;
-		}
-		i++;
-	}
+	tab = ft_null_tab_bis(mlx, tab);
 	return (tab);
 }
 
-int	ft_dmg_walls(t_mlx *mlx)
+int		ft_dmg_walls(t_mlx *mlx)
 {
 	int x;
 
@@ -66,7 +75,7 @@ int	ft_dmg_walls(t_mlx *mlx)
 	return (0);
 }
 
-int	ft_init_dmg_walls(t_mlx *mlx)
+int		ft_init_dmg_walls(t_mlx *mlx)
 {
 	t_map	*destroyed_map;
 	

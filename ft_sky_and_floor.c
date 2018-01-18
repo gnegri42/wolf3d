@@ -78,7 +78,7 @@ int 	ft_draw_floor(t_mlx *mlx, t_ray *ray, int y)
 }
 */
 
-int	ft_space_error(t_mlx *mlx)
+int		ft_space_error(t_mlx *mlx)
 {
 	int		i;
 	int		j;
@@ -91,7 +91,8 @@ int	ft_space_error(t_mlx *mlx)
 		{
 			if (mlx->map->tab[i][j] > 49)
 			{
-				ft_putstr("The value of a number is too big. Limit set to 50.\n");
+				ft_putstr(
+					"The value of a number is too big. Limit set to 50.\n");
 				return (-1);
 			}
 			j++;
@@ -101,7 +102,7 @@ int	ft_space_error(t_mlx *mlx)
 	return (0);
 }
 
-void		ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
+void	ft_calc_pos_hit(t_ray *ray, t_map *map, t_player *player)
 {
 	ray->texture_num = map->tab[player->map_x][player->map_y] - 1;
 	if (ray->side == 0)
