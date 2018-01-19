@@ -30,13 +30,64 @@ static void	ft_draw_square(t_mlx *mlx, int init_x, int init_y, int size)
 	}
 }
 
-static void	ft_draw_minimap2(t_mlx *mlx, int init_x, int init_y, int size)
+static void	ft_draw_player_pos(t_mlx *mlx, int init_x, int init_y, int size)
 {
 	init_x = mlx->player->pos_x;
 	init_y = mlx->player->pos_y;
+	init_x = init_x % 20;
+	init_y = init_y % 20;
 	mlx->map->color_minimap = ORANGE;
-	if (init_x < 20 && init_y < 20)
-		ft_draw_square(mlx, init_x, init_y, size);
+	ft_draw_square(mlx, init_x, init_y, size);
+}
+
+static void	ft_draw_minimap3(t_mlx *mlx, int init_y, int size)
+{
+	int x1;
+	int y1;
+
+	if (mlx->player->pos_x > 20 || mlx->player->pos_y > 20)
+	{
+		x1 = 0;
+		while (x1 < mlx->map->nb_int && x1 < 20)
+		{
+			y1 = 0;
+			while (y1 + init_y < mlx->map->nb_line && y1 < 20)
+			{
+				if (mlx->map->tab[init_y + y1][x1] > 0)
+				{
+					mlx->map->color_minimap = WHITE;
+					ft_draw_square(mlx, y1, x1, size);
+				}
+				y1++;
+			}
+			x1++;
+		}
+	}
+}
+
+static void	ft_draw_minimap2(t_mlx *mlx, int init_x, int size)
+{
+	int x1;
+	int y1;
+
+	if (mlx->player->pos_x > 20 || mlx->player->pos_y > 20)
+	{
+		x1 = 0;
+		while (x1 + init_x < mlx->map->nb_int && x1 < 20)
+		{
+			y1 = 0;
+			while (y1 < mlx->map->nb_line && y1 < 20)
+			{
+				if (mlx->map->tab[y1][init_x + x1] > 0)
+				{
+					mlx->map->color_minimap = WHITE;
+					ft_draw_square(mlx, y1, x1, size);
+				}
+				y1++;
+			}
+			x1++;
+		}
+	}
 }
 
 int			ft_draw_minimap(t_mlx *mlx)
@@ -47,6 +98,7 @@ int			ft_draw_minimap(t_mlx *mlx)
 
 	size = WIN_WIDTH / 5 / mlx->map->nb_int;
 	init_x = 0;
+	init_y = 0;
 	while (init_x < mlx->map->nb_int && init_x < 20)
 	{
 		init_y = 0;
@@ -54,13 +106,20 @@ int			ft_draw_minimap(t_mlx *mlx)
 		{
 			if (mlx->map->tab[init_y][init_x] > 0)
 			{
-				mlx->map->color_minimap = WHITE;
-				ft_draw_square(mlx, init_y, init_x, size);
+				if (mlx->player->pos_x < 20 && mlx->player->pos_y < 20)
+				{
+					mlx->map->color_minimap = WHITE;
+					ft_draw_square(mlx, init_y, init_x, size);
+				}					
 			}
 			init_y++;
 		}
 		init_x++;
 	}
-	ft_draw_minimap2(mlx, init_x, init_y, size);
+	if (init_y >= mlx->map->nb_line && init_x <= mlx->map->nb_int)
+		ft_draw_minimap2(mlx, init_x, size);
+	else if (init_x >= mlx->map->nb_int && init_y <= mlx->map->nb_line)
+		ft_draw_minimap3(mlx, init_y, size);
+	ft_draw_player_pos(mlx, init_x, init_y, size);
 	return (0);
 }

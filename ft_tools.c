@@ -129,7 +129,7 @@ int			ft_big_int_error(t_mlx *mlx)
 			if (mlx->map->tab[i][j] > 49)
 			{
 				ft_putstr(
-					"The value of a number is too big. Limit set to 50.\n");
+					"Error : The value of a number is too big. Limit set to 50.\n");
 				return (-1);
 			}
 			j++;
