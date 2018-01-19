@@ -99,6 +99,7 @@ int			ft_draw_minimap(t_mlx *mlx)
 	size = WIN_WIDTH / 5 / mlx->map->nb_int;
 	init_x = 0;
 	init_y = 0;
+	mlx->map->color_minimap = WHITE;
 	while (init_x < mlx->map->nb_int && init_x < 20)
 	{
 		init_y = 0;
@@ -107,10 +108,7 @@ int			ft_draw_minimap(t_mlx *mlx)
 			if (mlx->map->tab[init_y][init_x] > 0)
 			{
 				if (mlx->player->pos_x < 20 && mlx->player->pos_y < 20)
-				{
-					mlx->map->color_minimap = WHITE;
-					ft_draw_square(mlx, init_y, init_x, size);
-				}					
+					ft_draw_square(mlx, init_y, init_x, size);		
 			}
 			init_y++;
 		}
