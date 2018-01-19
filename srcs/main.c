@@ -57,6 +57,11 @@ static void	ft_enclosed(t_mlx *mlx)
 			mlx->map->tab[mlx->map->nb_line - 1][j] = 1;
 		j++;
 	}
+	if (mlx->map->nb_line < 3)
+	{
+		ft_putstr("The map cannot be composed of less than 3 lines of int.\n");
+		exit(0);
+	}
 	ft_enclosed_bis(mlx);
 }
 
