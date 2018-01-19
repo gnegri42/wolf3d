@@ -14,7 +14,7 @@
 # define WOLF3D_H
 
 # include <stdlib.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <unistd.h>
 # include "mlx.h"
 # include <fcntl.h>

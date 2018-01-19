@@ -19,14 +19,14 @@ static void	ft_enclosed_bis(t_mlx *mlx)
 	i = 0;
 	while (i < mlx->map->nb_line)
 	{
-		if (mlx->map->tab[i][0] == 0)
+		if (mlx->map->tab[i][0] != 1)
 			mlx->map->tab[i][0] = 1;
 		i++;
 	}
 	i = 0;
 	while (i < mlx->map->nb_line)
 	{
-		if (mlx->map->tab[i][mlx->map->nb_int - 1] == 0)
+		if (mlx->map->tab[i][mlx->map->nb_int - 1] != 1)
 			mlx->map->tab[i][mlx->map->nb_int - 1] = 1;
 		i++;
 	}
@@ -41,14 +41,14 @@ static void	ft_enclosed(t_mlx *mlx)
 	j = 0;
 	while (i < mlx->map->nb_int)
 	{
-		if (mlx->map->tab[0][i] == 0)
+		if (mlx->map->tab[0][i] != 1)
 			mlx->map->tab[0][i] = 1;
 		i++;
 	}
 	i = 0;
 	while (j < mlx->map->nb_int)
 	{
-		if (mlx->map->tab[mlx->map->nb_line - 1][j] == 0)
+		if (mlx->map->tab[mlx->map->nb_line - 1][j] != 1)
 			mlx->map->tab[mlx->map->nb_line - 1][j] = 1;
 		j++;
 	}
