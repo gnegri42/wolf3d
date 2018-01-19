@@ -32,6 +32,7 @@ SRCS = 			main.c\
 				ft_tools.c\
 				ft_fill_pixel.c\
 				ft_dmg_walls.c\
+				ft_modif_textures.c\
 
 OBJS = 			$(SRCS:.c=.o)
 

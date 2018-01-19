@@ -110,10 +110,12 @@ void				ft_draw_col(t_mlx *mlx, int x)
 	}
 	while (i <= mlx->map->pixel_last)
 	{
-		if (mlx->map->switch_tex == 1)
-			color = ft_get_initial_color(mlx);
-		else
+		if (mlx->map->switch_tex == 0 && mlx->map->modif_textures == 0)
 			color = ft_get_color(mlx, i);
+		else if (mlx->map->switch_tex == 0 && mlx->map->modif_textures == 1)
+			color = ft_modif_tex_color(mlx, i);
+		else
+			color = ft_get_initial_color(mlx);
 		ft_fill_pixel(mlx->img, x, i, color);
 		i++;
 	}

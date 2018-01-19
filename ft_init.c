@@ -42,6 +42,7 @@ static void	ft_init_map(t_mlx *mlx)
 	mlx->map->switch_tex = 1;
 	mlx->map->show_map = 0;
 	mlx->map->show_help = 1;
+	mlx->map->modif_textures = 0;
 	if (WIN_WIDTH > 500 && WIN_HEIGHT > 250)
 		mlx->map->resize = 1;
 	else

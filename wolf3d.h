@@ -112,6 +112,7 @@ typedef struct		s_map
 	int				show_map;
 	int				color_minimap;
 	int				show_help;
+	int				modif_textures;
 	t_img			*texture;
 }					t_map;
 
@@ -152,5 +153,7 @@ int					ft_init_dmg_walls(t_mlx *mlx);
 int					ft_dmg_walls(t_mlx *mlx);
 int					ft_big_int_error(t_mlx *mlx);
 int					ft_expose_commands(t_mlx *mlx);
+int					ft_switch_text_mode(t_mlx *mlx);
+int					ft_modif_tex_color(t_mlx *mlx, int y);
 
 #endif

@@ -18,8 +18,8 @@ int			ft_expose_hook(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	if (mlx->map->show_help == 1)
 	{
-			mlx->map->show_map = 0;
-			ft_expose_commands(mlx);
+		mlx->map->show_map = 0;
+		ft_expose_commands(mlx);
 	}
 	return (0);
 }
@@ -90,6 +90,8 @@ int			ft_key_events(int keycode, t_mlx *mlx)
 		ft_move_events(keycode, mlx);
 	if (keycode == 17 || keycode == 4)
 		ft_switch_tex_or_help(keycode, mlx);
+	if (keycode == 48)
+		ft_switch_text_mode(mlx);
 	if (keycode == 51 || keycode == 46)
 		ft_reset_and_map(keycode, mlx);
 	if (keycode == 257)

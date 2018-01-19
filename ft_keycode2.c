@@ -21,3 +21,12 @@ int		ft_key_release(int keycode, t_mlx *mlx)
 	}
 	return (0);
 }
+
+int		ft_switch_text_mode(t_mlx *mlx)
+{
+	if (mlx->map->modif_textures == 0)
+		mlx->map->modif_textures = 1;
+	else
+		mlx->map->modif_textures = 0;
+	return (0);
+}
