@@ -36,7 +36,7 @@ SRCS = 			main.c\
 OBJS = 			$(SRCS:.c=.o)
 
 INC = 			libft.h\
-				fractol.h\
+				wolf3d.h\
 
 CC = 			gcc
 

@@ -18,8 +18,8 @@ int			ft_expose_hook(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	if (mlx->map->show_help == 1)
 	{
-			mlx->map->show_map = 0;
-			ft_expose_commands(mlx);
+		mlx->map->show_map = 0;
+		ft_expose_commands(mlx);
 	}
 	return (0);
 }
