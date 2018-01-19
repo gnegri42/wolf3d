@@ -27,7 +27,7 @@ static int	ft_check_space(char *str)
 	}
 	if (space == 0)
 	{
-		ft_putstr("The map cannot be composed of just one row of int.\n");
+		ft_putstr("The map cannot be composed of less than 3 row of int.\n");
 		return (-1);
 	}
 	return (0);

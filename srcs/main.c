@@ -30,6 +30,11 @@ static void	ft_enclosed_bis(t_mlx *mlx)
 			mlx->map->tab[i][mlx->map->nb_int - 1] = 1;
 		i++;
 	}
+	if (mlx->map->nb_int < 3)
+	{
+		ft_putstr("The map cannot be composed of less than 3 row of int.\n");
+		exit(0);
+	}
 }
 
 static void	ft_enclosed(t_mlx *mlx)
