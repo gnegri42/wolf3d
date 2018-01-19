@@ -22,8 +22,8 @@
 # include <sys/stat.h>
 # include <math.h>
 
-# define WIN_WIDTH		1200
-# define WIN_HEIGHT		1000
+# define WIN_WIDTH		800
+# define WIN_HEIGHT		600
 # define TEXTURE_WIDTH	64
 # define TEXTURE_HEIGHT	64
 
@@ -155,5 +155,6 @@ int					ft_big_int_error(t_mlx *mlx);
 int					ft_expose_commands(t_mlx *mlx);
 int					ft_switch_text_mode(t_mlx *mlx);
 int					ft_modif_tex_color(t_mlx *mlx, int y);
+int					ft_second_check(t_mlx *mlx);
 
 #endif

@@ -35,6 +35,7 @@ static void	ft_enclosed_bis(t_mlx *mlx)
 		ft_putstr("The map cannot be composed of less than 3 row of int.\n");
 		exit(0);
 	}
+	ft_second_check(mlx);
 }
 
 static void	ft_enclosed(t_mlx *mlx)

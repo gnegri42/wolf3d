@@ -89,7 +89,7 @@ static int	ft_invalid(char *str, int i)
 		if (str[i] != ' ' && str[i] != '\n'\
 				&& !(str[i] >= '0' && str[i] <= '9'))
 		{
-			ft_putstr("Error: bad character in file\n");
+			ft_putstr("Error: bad character in file.\n");
 			return (-1);
 		}
 		if (str[i] == '0')
@@ -98,7 +98,7 @@ static int	ft_invalid(char *str, int i)
 	}
 	if (count == 0)
 	{
-		ft_putstr("Error: no place to stand in the map\n");
+		ft_putstr("Error: no place to stand in the map.\n");
 		return (-1);
 	}
 	return (0);
@@ -111,7 +111,7 @@ int			ft_check_errors(char *str)
 	i = 0;
 	if (str[0] == '\0')
 	{
-		ft_putstr("Error: file is empty\n");
+		ft_putstr("Error: file is empty.\n");
 		return (-1);
 	}
 	while (str[i] != '\0')

@@ -12,6 +12,33 @@
 
 #include "wolf3d.h"
 
+int			ft_second_check(t_mlx *mlx)
+{
+	int	i;
+	int j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (i < mlx->map->nb_line)
+	{
+		j = 0;
+		while (j < mlx->map->nb_int)
+		{
+			if (mlx->map->tab[i][j] == 0)
+			{
+				count = 1;
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	ft_putstr("No place to stand after walls have been built.\n");
+	exit(0);
+	return (-1);
+}
+
 static void	ft_wolf_free_image(t_mlx *mlx)
 {
 	int x;
