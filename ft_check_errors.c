@@ -27,7 +27,7 @@ static int	ft_check_space(char *str)
 	}
 	if (space == 0)
 	{
-		ft_putstr("The map can't be composed of just one row of int.\n");
+		ft_putstr("The map cannot be composed of just one row of int.\n");
 		return (-1);
 	}
 	return (0);
@@ -46,13 +46,13 @@ static int	ft_number_error(char *str)
 				i++;
 			if ((str[i] > '0' && str[i] < '9') && str[i + 1] != ' ')
 			{
-				ft_putstr("Wrong number value.\n");
+				ft_putstr("Error : Wrong number value.\n");
 				return (-1);
 			}
 		}
 		else if (str[i + 1] == ' ' && (str[i + 1] < '0' && str[i + 1] > '9'))
 		{
-			ft_putstr("Wrong number value.\n");
+			ft_putstr("Error : Wrong number value.\n");
 			return (-1);
 		}
 		i++;
