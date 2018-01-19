@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 static int	**ft_null_tab_bis(t_mlx *mlx, int **tab)
 {
@@ -68,9 +67,15 @@ int			ft_dmg_walls(t_mlx *mlx)
 	x = 0;
 	mlx->destroyed_map->tex_hit = mlx->map->
 	tab[mlx->player->map_x][mlx->player->map_y];
-	if (mlx->destroyed_map->tex_hit > 0 && mlx->player->weapon == 1
+	if (mlx->destroyed_map->tex_hit > 1 && mlx->player->weapon == 1
 		&& mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] < 9)
 		mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] += 1;
+	if (mlx->destroyed_map->tex_hit > 1 && mlx->player->weapon == 1
+		&& mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] == 9)
+	{
+		mlx->destroyed_map->tab[mlx->player->map_x][mlx->player->map_y] = 0;
+		mlx->map->tab[mlx->player->map_x][mlx->player->map_y] = 0;
+	}
 	return (0);
 }
 

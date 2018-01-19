@@ -89,11 +89,7 @@ static void			ft_draw_col2(t_mlx *mlx, int x, int i)
 		if (mlx->map->switch_tex == 1)
 			ft_fill_pixel(mlx->img, x, i, BLACK);
 		else
-		{
-		//color = ft_draw_floor(mlx, mlx->player->ray, i);
-		//color = ft_text_ground(mlx, x, i);
 			ft_fill_pixel(mlx->img, x, i, BLACK);
-		}
 		i++;
 	}
 	if (mlx->map->show_map == 1)

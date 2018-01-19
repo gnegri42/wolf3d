@@ -34,13 +34,6 @@
 # define ORANGE 0x00FFA500
 # define RED 0xFF0000
 
-typedef struct		s_sprite				// A ENLEVER
-{
-	double			x;
-	double			y;
-	int				texture;
-}					t_sprite;				// A ENLEVER
-
 typedef struct		s_color
 {
 	int				col_x;
@@ -60,13 +53,8 @@ typedef struct		s_ray
 	double			delta_dist_y;
 	double			wall_dist;
 	double			wall_hit;
-	double			floor_pos_x;
-	double			floor_pos_y;
-	double			wall_dist_bottom;
 	int				texture_num;
 	int				texture_coord;
-	int				nb_max_texture;
-	t_color			*tex_col;
 	int				step_x;
 	int				step_y;
 	int				hit;
@@ -84,7 +72,6 @@ typedef struct		s_player
 	double			camera_x;
 	double			dist;
 	double			current_dist;
-	int				fov;
 	int				map_x;
 	int				map_y;
 	double			move;
@@ -136,7 +123,6 @@ typedef struct		s_mlx
 	t_map			*map;
 	t_map			*destroyed_map;
 	t_player		*player;
-	t_sprite		*sprite;
 }					t_mlx;
 
 int					ft_reader(int argc, char *argv, t_map *map);
@@ -161,7 +147,6 @@ int					ft_mouse_events(int button, int x, int y, t_mlx *mlx);
 int					ft_draw_minimap(t_mlx *mlx);
 int					ft_key_release(int keycode, t_mlx *mlx);
 int					ft_exit_properly(t_mlx *mlx);
-int					ft_draw_floor(t_mlx *mlx, t_ray *ray, int y);					// A ENLEVER
 void				ft_fill_pixel(t_img *img, int x, int y, int color);
 int					ft_init_dmg_walls(t_mlx *mlx);
 int					ft_dmg_walls(t_mlx *mlx);
